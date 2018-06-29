@@ -1,0 +1,27 @@
+{
+  "method": "GET",
+  "baseUri": "https://requestloggerbin.herokuapp.com",
+  "basePath": "/",
+  "httpVersion": "HTTP/1.1",
+  "cookies": {
+    "c1": "d4c19a20393919416cc88d29a4dec3cbe1528282256",
+    "c2": "null"
+  },
+  "headers": {
+    "accept": "html/text",
+    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8"
+  },
+  "queryString": {
+    "a": [
+      "1",
+      "2"
+    ],
+    "b": "3"
+  },
+  "postData": {
+    "mimeType": "application/json",
+    "object": {
+      "foo": "bar"
+    }
+  }
+}
