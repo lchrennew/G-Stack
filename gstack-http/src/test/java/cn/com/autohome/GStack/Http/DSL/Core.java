@@ -9,6 +9,7 @@ import io.restassured.specification.RequestSpecification;
 import java.util.HashMap;
 import java.util.Map;
 
+import static cn.com.autohome.GStack.Basic.ConfigUtils.env;
 import static cn.com.autohome.GStack.Basic.JsonUtils.parseJSON;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
 import static io.restassured.RestAssured.with;
@@ -16,7 +17,6 @@ import static io.restassured.config.EncoderConfig.encoderConfig;
 import static io.restassured.config.RestAssuredConfig.config;
 import static io.restassured.http.ContentType.TEXT;
 import static io.restassured.http.ContentType.URLENC;
-import static java.lang.System.getenv;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class Core {
@@ -70,10 +70,10 @@ public class Core {
     }
 
     public static void setupRestAssuredWithEnvironment() {
-        String baseUri = getenv(BASE_URI);
-        String contentType = getenv(CONTENTTYPE);
-        String basePath = getenv(BASE_PATH);
-        String accept = getenv(ACCEPT);
+        String baseUri = env(BASE_URI);
+        String contentType = env(CONTENTTYPE);
+        String basePath = env(BASE_PATH);
+        String accept = env(ACCEPT);
         Map<String, String> headers = new HashMap<>();
         Map<String, String> cookies = new HashMap<>();
         Map<String, String> query = new HashMap<>();

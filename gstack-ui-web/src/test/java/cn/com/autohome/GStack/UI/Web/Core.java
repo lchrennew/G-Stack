@@ -6,10 +6,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static cn.com.autohome.GStack.Basic.ConfigUtils.env;
 import static cn.com.autohome.GStack.Basic.DynamicArguments.register;
 import static cn.com.autohome.GStack.Basic.DynamicArguments.unregister;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
-import static java.lang.System.getenv;
 import static java.lang.System.setProperty;
 import static org.openqa.selenium.chrome.ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY;
 
@@ -23,7 +23,7 @@ public class Core {
 
     public static void start() {
         registerDynamicArguments();
-        setProperty(CHROME_DRIVER_EXE_PROPERTY, getenv(SELENIUM_EXECUTABLE_CHROME));
+        setProperty(CHROME_DRIVER_EXE_PROPERTY, env(SELENIUM_EXECUTABLE_CHROME));
     }
 
     public static void stop() {

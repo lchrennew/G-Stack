@@ -13,7 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static java.lang.System.getenv;
+import static cn.com.autohome.GStack.Basic.ConfigUtils.env;
+import static java.lang.String.format;
 import static java.sql.DriverManager.getConnection;
 
 public class Core {
@@ -44,7 +45,7 @@ public class Core {
 
     }
 
-    static String getConnectionString(String name) {
-        return getenv(String.format("mysql_connection_string_%s", name));
+    private static String getConnectionString(String name) {
+        return env(format("mysql_connection_string_%s", name));
     }
 }
