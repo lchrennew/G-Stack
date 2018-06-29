@@ -1,6 +1,6 @@
 package cn.com.autohome.GStack.MySql.DSL;
 
-import cn.com.autohome.GStack.Basic.StoreUtils;
+
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.TableCell;
@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import static cn.com.autohome.GStack.Basic.StoreUtils.*;
 import static cn.com.autohome.GStack.MySql.Core.getConnectionByName;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getSpecDataStore;
 import static java.lang.String.format;
@@ -26,7 +27,7 @@ public class Insert {
     @Step("SQL:INSERT <connection> <into> <values>")
     public void insert(String connectionStringName, String into, Table values) throws SQLException {
         PreparedStatement statement = buildStatement(connectionStringName, into, values);
-        String keyName = StoreUtils.getKeyName(values);
+        String keyName = getKeyName(values);
         if (keyName != null) {
             executeAllAndGetInsertedKey(statement, values, keyName);
         } else {
@@ -37,7 +38,7 @@ public class Insert {
 
     private static void storeValues(Table values) {
         DataStore store = getSpecDataStore();
-        StoreUtils.storeTable(values, store);
+        storeTable(values, store);
     }
 
     private static PreparedStatement buildStatement(String connectionStringName, String into, Table values) throws SQLException {
@@ -56,7 +57,7 @@ public class Insert {
         DataStore store = getSpecDataStore();
         for (TableRow row : values.getTableRows()) {
             execute(statement, row);
-            storeInsertedKey(statement, keyName, store, row.getCell(format("%s%s", keyName, StoreUtils.KEY_SUFFIX)));
+            storeInsertedKey(statement, keyName, store, row.getCell(format("%s%s", keyName, KEY_SUFFIX)));
         }
     }
 
@@ -76,7 +77,7 @@ public class Insert {
 
     private static void setParams(PreparedStatement statement, TableRow row) throws SQLException {
         List<TableCell> cells = row.getTableCells();
-        cells.removeIf(cell -> cell.getColumnName().endsWith(StoreUtils.KEY_SUFFIX));
+        cells.removeIf(cell -> cell.getColumnName().endsWith(KEY_SUFFIX));
         for (int i = 1; i <= cells.size(); i++) {
             statement.setString(i, cells.get(i - 1).getValue());
         }
@@ -85,13 +86,13 @@ public class Insert {
 
     private static String buildParams(Table values) {
         return join(", ",
-                asEnumerable(values.getColumnNames()).where(StoreUtils.notKey).select(x -> "?"));
+                asEnumerable(values.getColumnNames()).where(notKey).select(x -> "?"));
     }
 
 
     private static String buildColumns(Table values) {
         return join(", ",
-                asEnumerable(values.getColumnNames()).where(StoreUtils.notKey));
+                asEnumerable(values.getColumnNames()).where(notKey));
     }
 
 }

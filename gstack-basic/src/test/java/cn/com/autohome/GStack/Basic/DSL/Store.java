@@ -1,11 +1,11 @@
 package cn.com.autohome.GStack.Basic.DSL;
 
-import cn.com.autohome.GStack.Basic.StoreUtils;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.datastore.DataStore;
 
 import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.StoreUtils.storeTable;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.*;
 
 public class Store {
@@ -32,17 +32,17 @@ public class Store {
 
     @Step("SET:SUITE <table>")
     public void storesSuite(Table table) {
-        StoreUtils.storeTable(table, suiteDataStore);
+        storeTable(table, suiteDataStore);
     }
 
     @Step("SET:SPEC <table>")
     public void storesSpec(Table table) {
-        StoreUtils.storeTable(table, specDataStore);
+        storeTable(table, specDataStore);
     }
 
     @Step("SET:SCENARIO <table>")
     public void storesScenario(Table table) {
-        StoreUtils.storeTable(table, scenarioDataStore);
+        storeTable(table, scenarioDataStore);
     }
 
 
