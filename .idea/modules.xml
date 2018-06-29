@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/gstack-http/gstack-http.iml" filepath="$PROJECT_DIR$/gstack-http/gstack-http.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-mysql/gstack-mysql.iml" filepath="$PROJECT_DIR$/gstack-mysql/gstack-mysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-ui-web/gstack-ui-web.iml" filepath="$PROJECT_DIR$/gstack-ui-web/gstack-ui-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gstack-workspace/gstack-workspace.iml" filepath="$PROJECT_DIR$/gstack-workspace/gstack-workspace.iml" />
     </modules>
   </component>
 </project>

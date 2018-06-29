@@ -11,6 +11,7 @@
         <module name="gstack-http" />
         <module name="gstack-mysql" />
         <module name="gstack-ui-web" />
+        <module name="gstack-workspace" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
       <module name="gstack-http" target="1.8" />
       <module name="gstack-mysql" target="1.8" />
       <module name="gstack-ui-web" target="1.8" />
+      <module name="gstack-workspace" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="test-libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/gstack-workspace/test-libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/gstack-workspace/test-libs" recursive="false" />
+  </library>
+</component>

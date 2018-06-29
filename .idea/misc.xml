@@ -38,6 +38,7 @@
         <option value="$PROJECT_DIR$/gstack-api-log/pom.xml" />
         <option value="$PROJECT_DIR$/gstack-mysql/pom.xml" />
         <option value="$PROJECT_DIR$/gstack-ui-web/pom.xml" />
+        <option value="$PROJECT_DIR$/gstack-workspace/pom.xml" />
       </list>
     </option>
   </component>
