@@ -57,7 +57,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: javax.mail:mailapi:1.4.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.sf.jopt-simple:jopt-simple:4.6" level="project" />
-    <orderEntry type="module" module-name="gstack-basic" scope="TEST" production-on-test="" />
+    <orderEntry type="module" module-name="gstack-basic" production-on-test="" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.calcite:calcite-linq4j:1.16.0" level="project" />
   </component>

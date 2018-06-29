@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MavenCompilerTasksManager">
+    <option name="beforeCompileTasks">
+      <set>
+        <MavenCompilerTask>
+          <option name="goal" value="install" />
+          <option name="projectPath" value="$PROJECT_DIR$/gstack-basic/pom.xml" />
+        </MavenCompilerTask>
+        <MavenCompilerTask>
+          <option name="goal" value="install" />
+          <option name="projectPath" value="$PROJECT_DIR$/gstack-http/pom.xml" />
+        </MavenCompilerTask>
+      </set>
+    </option>
+    <option name="afterCompileTasks">
+      <set>
+        <MavenCompilerTask>
+          <option name="goal" value="package" />
+          <option name="projectPath" value="$PROJECT_DIR$/gstack-api-log/pom.xml" />
+        </MavenCompilerTask>
+        <MavenCompilerTask>
+          <option name="goal" value="package" />
+          <option name="projectPath" value="$PROJECT_DIR$/gstack-mysql/pom.xml" />
+        </MavenCompilerTask>
+        <MavenCompilerTask>
+          <option name="goal" value="package" />
+          <option name="projectPath" value="$PROJECT_DIR$/gstack-ui-web/pom.xml" />
+        </MavenCompilerTask>
+      </set>
+    </option>
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
