@@ -1,6 +1,5 @@
 package cn.com.autohome.GStack.MySql.DSL;
 
-import cn.com.autohome.GStack.MySql.Core;
 import cn.com.autohome.GStack.Basic.StoreUtils;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
@@ -14,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import static cn.com.autohome.GStack.MySql.Core.getConnectionByName;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getSpecDataStore;
 import static java.lang.String.format;
 import static java.lang.String.join;
@@ -42,7 +42,7 @@ public class Insert {
 
     private static PreparedStatement buildStatement(String connectionStringName, String into, Table values) throws SQLException {
         String sql = format(INSERT_SQL, into, buildColumns(values), buildParams(values));
-        Connection connection = Core.getConnectionByName(connectionStringName);
+        Connection connection = getConnectionByName(connectionStringName);
         return connection.prepareStatement(sql, RETURN_GENERATED_KEYS);
     }
 
