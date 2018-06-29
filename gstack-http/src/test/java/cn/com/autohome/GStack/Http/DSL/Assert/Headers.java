@@ -2,7 +2,7 @@ package cn.com.autohome.GStack.Http.DSL.Assert;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.Http.DSL.Core.then;
+import static cn.com.autohome.GStack.Http.DSL.Core.then;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.nullValue;
 

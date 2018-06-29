@@ -9,7 +9,7 @@ import io.restassured.specification.RequestSpecification;
 import java.util.HashMap;
 import java.util.Map;
 
-import static cn.com.autohome.Basic.JsonUtils.parseJSON;
+import static cn.com.autohome.GStack.Basic.JsonUtils.parseJSON;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
 import static io.restassured.RestAssured.with;
 import static io.restassured.config.EncoderConfig.encoderConfig;

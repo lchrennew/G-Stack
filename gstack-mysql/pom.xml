@@ -34,7 +34,7 @@
             <groupId>cn.com.autohome</groupId>
             <artifactId>gstack-basic</artifactId>
             <version>1.0.0</version>
-            <scope>test</scope>
+            <scope>compile</scope>
             <type>test-jar</type>
         </dependency>
     </dependencies>

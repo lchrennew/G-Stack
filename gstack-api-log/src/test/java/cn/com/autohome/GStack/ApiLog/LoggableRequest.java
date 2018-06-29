@@ -9,7 +9,7 @@ import io.restassured.specification.ProxySpecification;
 
 import java.util.Map;
 
-import static cn.com.autohome.Basic.JsonUtils.stringify;
+import static cn.com.autohome.GStack.Basic.JsonUtils.stringify;
 import static io.restassured.http.ContentType.JSON;
 import static io.restassured.http.ContentType.URLENC;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;

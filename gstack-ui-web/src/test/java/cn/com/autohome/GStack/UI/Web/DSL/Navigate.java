@@ -2,8 +2,8 @@ package cn.com.autohome.GStack.UI.Web.DSL;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.UI.Web.Core.getDriver;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.UI.Web.Core.getDriver;
 
 public class Navigate {
     @Step("OPEN <url>")

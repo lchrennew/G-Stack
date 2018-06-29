@@ -1,6 +1,6 @@
 package cn.com.autohome.GStack.Basic.DSL;
 
-import cn.com.autohome.Basic.Core;
+import cn.com.autohome.GStack.Basic.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 

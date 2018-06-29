@@ -6,8 +6,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static cn.com.autohome.Basic.DynamicArguments.register;
-import static cn.com.autohome.Basic.DynamicArguments.unregister;
+import static cn.com.autohome.GStack.Basic.DynamicArguments.register;
+import static cn.com.autohome.GStack.Basic.DynamicArguments.unregister;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
 import static java.lang.System.getenv;
 import static java.lang.System.setProperty;

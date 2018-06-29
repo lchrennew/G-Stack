@@ -6,8 +6,8 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.List;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Http.DSL.Core.buildRequest;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Http.DSL.Core.buildRequest;
 
 public class Body {
     @Step("BODY:CONTENT <body>")

@@ -7,8 +7,8 @@ import io.restassured.response.ExtractableResponse;
 
 import java.util.Map;
 
-import static cn.com.autohome.Basic.JsonUtils.parseJSON;
-import static cn.com.autohome.Basic.JsonUtils.stringify;
+import static cn.com.autohome.GStack.Basic.JsonUtils.parseJSON;
+import static cn.com.autohome.GStack.Basic.JsonUtils.stringify;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class LoggableResponse {

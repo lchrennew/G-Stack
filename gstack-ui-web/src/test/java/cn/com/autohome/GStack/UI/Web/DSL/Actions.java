@@ -2,7 +2,7 @@ package cn.com.autohome.GStack.UI.Web.DSL;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 
 public class Actions {
     @Step("CLICK <element>")

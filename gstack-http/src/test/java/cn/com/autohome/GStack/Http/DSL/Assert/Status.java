@@ -1,12 +1,13 @@
 package cn.com.autohome.GStack.Http.DSL.Assert;
 
-import cn.com.autohome.Http.DSL.Core;
 import com.thoughtworks.gauge.Step;
+
+import static cn.com.autohome.GStack.Http.DSL.Core.then;
 
 public class Status {
 
     @Step("STATUS <statusCode>")
     public void CheckStatus(Integer statusCode) {
-        Core.then().statusCode(statusCode);
+        then().statusCode(statusCode);
     }
 }

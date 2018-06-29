@@ -1,20 +1,21 @@
 package cn.com.autohome.GStack.Http.DSL.Arrange;
 
-import cn.com.autohome.Http.DSL.Core;
+import cn.com.autohome.GStack.Http.DSL.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
+import io.restassured.http.ContentType;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Http.DSL.Core.buildRequest;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Http.DSL.Core.buildRequest;
 
 public class Headers {
     @Step("ACCEPT <mimeType>")
     public void accept(String mimeType) {
         mimeType = fillArgs(mimeType);
-        Core.buildRequest().header("Accept", mimeType);
+        buildRequest().header("Accept", mimeType);
 
     }
 
@@ -41,12 +42,16 @@ public class Headers {
     public void header(String name, String value) {
         name = fillArgs(name);
         value = fillArgs(value);
-        Core.buildRequest().header(name, value);
+        buildRequest().header(name, value);
     }
 
     @Step("CONTENTTYPE <contentType>")
     public void contentType(String contentType) {
-        Core.buildRequest().contentType(contentType);
+        buildRequest().contentType(contentType);
     }
 
+    @Step("CONTENTTYPE <contentType> <charSet>")
+    public void contentTypeWithCharSet(String contentType, String charSet) {
+        buildRequest().contentType(ContentType.fromContentType(contentType).withCharset(charSet));
+    }
 }

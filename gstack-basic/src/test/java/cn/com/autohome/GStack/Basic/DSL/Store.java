@@ -1,11 +1,11 @@
 package cn.com.autohome.GStack.Basic.DSL;
 
-import cn.com.autohome.Basic.StoreUtils;
+import cn.com.autohome.GStack.Basic.StoreUtils;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.datastore.DataStore;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.*;
 
 public class Store {

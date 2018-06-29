@@ -5,7 +5,7 @@ import com.thoughtworks.gauge.Step;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
-import static cn.com.autohome.MySql.Core.*;
+import static cn.com.autohome.GStack.MySql.Core.*;
 import static org.junit.Assert.assertTrue;
 
 public class Execute {

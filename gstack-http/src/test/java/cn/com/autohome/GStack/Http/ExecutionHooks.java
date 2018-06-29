@@ -2,7 +2,7 @@ package cn.com.autohome.GStack.Http;
 
 import com.thoughtworks.gauge.*;
 
-import static cn.com.autohome.Http.DSL.Core.setupRestAssuredWithEnvironment;
+import static cn.com.autohome.GStack.Http.DSL.Core.setupRestAssuredWithEnvironment;
 
 public class ExecutionHooks {
     @BeforeSuite

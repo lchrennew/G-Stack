@@ -7,9 +7,9 @@ import com.thoughtworks.gauge.datastore.DataStore;
 
 import java.util.List;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Basic.StoreUtils.storeTable;
-import static cn.com.autohome.Http.DSL.Core.then;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.StoreUtils.storeTable;
+import static cn.com.autohome.GStack.Http.DSL.Core.then;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getSpecDataStore;
 
 public class Store {

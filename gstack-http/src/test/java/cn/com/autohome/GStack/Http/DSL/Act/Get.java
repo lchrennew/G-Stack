@@ -2,9 +2,9 @@ package cn.com.autohome.GStack.Http.DSL.Act;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Http.DSL.Core.buildRequest;
-import static cn.com.autohome.Http.DSL.Core.then;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Http.DSL.Core.buildRequest;
+import static cn.com.autohome.GStack.Http.DSL.Core.then;
 
 public class Get {
 

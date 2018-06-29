@@ -1,6 +1,6 @@
 package cn.com.autohome.GStack.Http.DSL.Assert;
 
-import cn.com.autohome.Http.DSL.Core;
+import cn.com.autohome.GStack.Http.DSL.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import io.restassured.http.ContentType;
@@ -9,8 +9,8 @@ import org.hamcrest.Matchers;
 
 import java.util.List;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Http.DSL.Core.then;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Http.DSL.Core.then;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
@@ -21,7 +21,7 @@ public class Body {
     @Step("CHECK:BODY <body>")
     public void checkBody(String body) {
         body = fillArgs(body);
-        Core.then().assertThat().content(equalTo(body));
+        then().assertThat().content(equalTo(body));
 
     }
 

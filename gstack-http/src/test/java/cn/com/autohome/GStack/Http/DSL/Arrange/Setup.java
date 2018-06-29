@@ -2,7 +2,7 @@ package cn.com.autohome.GStack.Http.DSL.Arrange;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.Http.DSL.Core.*;
+import static cn.com.autohome.GStack.Http.DSL.Core.*;
 
 public class Setup {
 

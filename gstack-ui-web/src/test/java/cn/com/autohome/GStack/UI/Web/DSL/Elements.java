@@ -5,9 +5,9 @@ import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.datastore.DataStore;
 import org.openqa.selenium.WebElement;
 
-import static cn.com.autohome.Basic.Core.fillArgs;
-import static cn.com.autohome.Basic.Core.print;
-import static cn.com.autohome.UI.Web.Core.getDriver;
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.Core.print;
+import static cn.com.autohome.GStack.UI.Web.Core.getDriver;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
 
 public class Elements {

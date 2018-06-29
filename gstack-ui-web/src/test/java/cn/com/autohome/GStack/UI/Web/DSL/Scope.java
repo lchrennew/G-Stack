@@ -2,8 +2,8 @@ package cn.com.autohome.GStack.UI.Web.DSL;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.UI.Web.Core.start;
-import static cn.com.autohome.UI.Web.Core.stop;
+import static cn.com.autohome.GStack.UI.Web.Core.start;
+import static cn.com.autohome.GStack.UI.Web.Core.stop;
 
 public class Scope {
     @Step("UI:WEB BEGIN")
