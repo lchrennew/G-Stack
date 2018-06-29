@@ -1,6 +1,5 @@
 package cn.com.autohome.GStack.Http.DSL.Arrange;
 
-import cn.com.autohome.GStack.Http.DSL.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import io.restassured.http.ContentType;
@@ -28,14 +27,14 @@ public class Headers {
             String value = fillArgs(row.getCell("value"));
             map.put(name, value);
         });
-        Core.buildRequest().cookies(map);
+        buildRequest().cookies(map);
     }
 
     @Step("COOKIE <name> <value>")
     public void cookie(String name, String value) {
         name = fillArgs(name);
         value = fillArgs(value);
-        Core.buildRequest().cookie(name, value);
+        buildRequest().cookie(name, value);
     }
 
     @Step("HEADER <name> <value>")

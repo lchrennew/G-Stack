@@ -1,13 +1,14 @@
 package cn.com.autohome.GStack.Basic.DSL;
 
-import cn.com.autohome.GStack.Basic.Core;
 import com.thoughtworks.gauge.Step;
 
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
+import static cn.com.autohome.GStack.Basic.Core.print;
 public class Print {
 
     @Step("PRINT <content>")
     public void printContent(String content) {
-        content = Core.fillArgs(content);
-        Core.print(content);
+        content = fillArgs(content);
+        print(content);
     }
 }

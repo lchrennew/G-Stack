@@ -1,16 +1,16 @@
 package cn.com.autohome.GStack.Basic.DSL;
 
-import cn.com.autohome.GStack.Basic.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 
+import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static org.junit.Assert.*;
 
 public class Assert {
     @Step("ASSERT <actual> <match> <expected>")
     public void assertX(String actual, String match, String expected) {
-        actual = Core.fillArgs(actual);
-        expected = Core.fillArgs(expected);
+        actual = fillArgs(actual);
+        expected = fillArgs(expected);
         switch (match) {
             case "<>":
             case "!=":

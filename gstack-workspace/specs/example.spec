@@ -10,6 +10,7 @@ Scenario Heading
 * ASSERT "1" "=" "1"
 * PRINT "ts:@{timestamp}"
 * BODY:FORM "test" "form"
+* HTTP:LOG
 * POST "http://requestloggerbin.herokuapp.com/request"
 * EXTRACT:CONTENT "body"
 * PRINT "@{body}"

@@ -26,3 +26,11 @@ Every heading in this file denotes a scenario. Every bulleted point denotes a st
 * POST "request"
 * EXTRACT:CONTENT "har1"
 * PRINT "@{har1}"
+
+## DEMO
+* ASSERT "1" "=" "1"
+* PRINT "ts:@{timestamp}"
+* BODY:FORM "test" "form"
+* POST "http://requestloggerbin.herokuapp.com/request"
+* EXTRACT:CONTENT "body"
+* PRINT "@{body}"

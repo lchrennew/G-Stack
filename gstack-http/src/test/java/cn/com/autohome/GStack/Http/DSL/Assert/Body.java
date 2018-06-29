@@ -1,6 +1,5 @@
 package cn.com.autohome.GStack.Http.DSL.Assert;
 
-import cn.com.autohome.GStack.Http.DSL.Core;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import io.restassured.http.ContentType;
@@ -28,20 +27,20 @@ public class Body {
     @Step("CHECK:CONTENT <string>")
     public void CheckContent(String string) {
         string = fillArgs(string);
-        Core.then().content(Matchers.containsString(string));
+        then().content(Matchers.containsString(string));
     }
 
     @Step("CHECK:JSONPATH <jsonPath> <value>")
     public void CheckJsonPath(String jsonPath, String value) {
         jsonPath = String.format("%s.toString()", fillArgs(jsonPath));
         value = fillArgs(value);
-        Core.then().contentType(ContentType.JSON).body(jsonPath, equalTo(value));
+        then().contentType(ContentType.JSON).body(jsonPath, equalTo(value));
     }
 
     @Step("CHECK:JSONPATH <table>")
     public void CheckJsonPath(Table table) {
         List<String> columns = table.getColumnNames();
-        ValidatableResponse response = Core.then();
+        ValidatableResponse response = then();
         table.getTableRows().forEach(row -> {
             String path = String.format("%s.toString()", row.getCell("path"));
             String value = fillArgs(row.getCell("value"));
@@ -53,25 +52,25 @@ public class Body {
 
     @Step("CHECK:JSONSCHEMA <schema>")
     public void CheckJsonSchema(String schema) {
-        Core.then().body(matchesJsonSchema(schema));
+        then().body(matchesJsonSchema(schema));
     }
 
     @Step("FAIL:CONTENT <content>")
     public void CheckConentShouldFail(String content) {
         content = fillArgs(content);
-        Core.then().content(not(containsString(content)));
+        then().content(not(containsString(content)));
     }
 
     @Step("FAIL:BODY <body>")
     public void CheckBodyShouldFail(String body) {
         body = fillArgs(body);
-        Core.then().content(not(equalTo(body)));
+        then().content(not(equalTo(body)));
     }
 
     @Step("FAIL:JSONPATH <jsonPath> <value>")
     public void CheckJsonPathShouldFail(String jsonPath, String value) {
         jsonPath = String.format("%s.toString()", fillArgs(jsonPath));
         value = fillArgs(value);
-        Core.then().body(jsonPath, not(equalTo(value)));
+        then().body(jsonPath, not(equalTo(value)));
     }
 }
