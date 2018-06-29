@@ -19,6 +19,36 @@
             <version>3.10.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>3.1.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.autohome</groupId>
+            <artifactId>gstack-basic</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.autohome</groupId>
+            <artifactId>gstack-http</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.calcite</groupId>
+            <artifactId>calcite-linq4j</artifactId>
+            <version>1.16.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,6 +74,33 @@
                         </configuration>
                         <goals>
                             <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>libs</outputDirectory>
+                    <scope>test</scope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>copy-dependencies</goal>
                         </goals>
                     </execution>
                 </executions>
