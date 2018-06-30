@@ -11,7 +11,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import static cn.com.autohome.GStack.Basic.DynamicArguments.*;
+import static cn.com.autohome.GStack.Basic.DynamicArguments.getArgNames;
 import static cn.com.autohome.GStack.Basic.StoreUtils.gets;
+import static java.lang.String.format;
+import static java.util.regex.Pattern.DOTALL;
+import static java.util.regex.Pattern.compile;
 
 public class ArgumentedStringParser extends CustomParameterParser<String> {
 
@@ -26,7 +31,7 @@ public class ArgumentedStringParser extends CustomParameterParser<String> {
     }
 
 
-    private final static Pattern argPatter = Pattern.compile("@\\{([^{}]+)}", Pattern.DOTALL);
+    private final static Pattern argPatter = compile("@\\{([^{}]+)}", DOTALL);
 
 
     public static String[] extractArguments(String input) {
@@ -45,13 +50,13 @@ public class ArgumentedStringParser extends CustomParameterParser<String> {
 
     private static String replaceArguments(String input, HashMap<String, String> replecements) {
         Set<String> keys = replecements.keySet();
-        Set<String> dynamicArgs = DynamicArguments.getArgNames();
+        Set<String> dynamicArgs = getArgNames();
         for (String name : dynamicArgs) {
-            input = input.replace(String.format("@{%s}", name), DynamicArguments.getArgValue(name));
+            input = input.replace(format("@{%s}", name), getArgValue(name));
         }
         for (String name :
                 keys) {
-            input = input.replace(String.format("@{%s}", name), replecements.get(name));
+            input = input.replace(format("@{%s}", name), replecements.get(name));
         }
         return input;
     }
