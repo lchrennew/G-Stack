@@ -3,6 +3,7 @@ package cn.com.autohome.GStack.Http.DSL;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.thoughtworks.gauge.datastore.DataStore;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
@@ -12,19 +13,19 @@ import java.util.Map;
 import static cn.com.autohome.GStack.Basic.ConfigUtils.env;
 import static cn.com.autohome.GStack.Basic.JsonUtils.parseJSON;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
-import static io.restassured.RestAssured.with;
+import static io.restassured.RestAssured.*;
 import static io.restassured.config.EncoderConfig.encoderConfig;
 import static io.restassured.config.RestAssuredConfig.config;
-import static io.restassured.http.ContentType.TEXT;
-import static io.restassured.http.ContentType.URLENC;
+import static io.restassured.http.ContentType.*;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class Core {
 
-    private final static String BASE_URI = "restassured_baseUri";
-    private final static String CONTENTTYPE = "restassured_contenttype";
-    private final static String BASE_PATH = "restassured_basePath";
-    private final static String ACCEPT = "restassured_accept";
+    private final static String BASE_URI = env("restassured_baseUri", DEFAULT_URI);
+    private final static ContentType CONTENTTYPE = fromContentType(env("restassured_accept", TEXT.toString()));
+    private final static String CHARSET = env("restassured_charset", "utf-8");
+    private final static String BASE_PATH = env("restassured_basePath", DEFAULT_PATH);
+    private final static String ACCEPT = CONTENTTYPE.getAcceptHeader();
     private final static String HEADERS = "restassured_headers_";
     private final static Integer HEADERS_LEN = HEADERS.length();
     private final static String COOKIES = "restassured_cookies_";
@@ -55,7 +56,7 @@ public class Core {
         }
         requestSpecification.config(
                 config().set().encoderConfig(
-                        encoderConfig().defaultContentCharset("utf-8")));
+                        encoderConfig().defaultContentCharset(CHARSET)));
         return requestSpecification;
     }
 
@@ -70,10 +71,10 @@ public class Core {
     }
 
     public static void setupRestAssuredWithEnvironment() {
-        String baseUri = env(BASE_URI);
-        String contentType = env(CONTENTTYPE);
-        String basePath = env(BASE_PATH);
-        String accept = env(ACCEPT);
+        String baseUri = BASE_URI;
+        String contentType = CONTENTTYPE.withCharset(CHARSET);
+        String basePath = BASE_PATH;
+        String accept = ACCEPT;
         Map<String, String> headers = new HashMap<>();
         Map<String, String> cookies = new HashMap<>();
         Map<String, String> query = new HashMap<>();
@@ -88,14 +89,10 @@ public class Core {
             }
         });
         RequestSpecification requestSpecification = buildRequest();
-        if (baseUri != null)
             requestSpecification
                     .baseUri(baseUri);
-        if (basePath != null)
             requestSpecification.basePath(basePath);
-        if (accept != null)
             requestSpecification.accept(accept);
-        if (contentType != null)
             requestSpecification.contentType(contentType);
         requestSpecification
                 .headers(headers)
@@ -120,10 +117,10 @@ public class Core {
             String contentType = loadContentType(postDataJson);
             if (URLENC.matches(contentType))
                 loadForms(postDataJson);
-//            else if (JSON.matches(contentType))
-//                loadPostJson(postDataJson);
-//            else
-//                loadPostText(postDataJson);
+            else if (JSON.matches(contentType))
+                loadPostJson(postDataJson);
+            else
+                loadPostText(postDataJson);
         }
     }
 
