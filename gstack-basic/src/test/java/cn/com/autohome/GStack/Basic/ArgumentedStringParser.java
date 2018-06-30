@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import static cn.com.autohome.GStack.Basic.StoreUtils.gets;
+
 public class ArgumentedStringParser extends CustomParameterParser<String> {
 
     @Override
@@ -60,7 +62,7 @@ public class ArgumentedStringParser extends CustomParameterParser<String> {
         else {
             String[] args = extractArguments(input);
             for (int i = 0; i < 2 && args.length > 0; i++) {
-                input = replaceArguments(input, StoreUtils.gets(args));
+                input = replaceArguments(input, gets(args));
                 args = extractArguments(input);
             }
             return input;
