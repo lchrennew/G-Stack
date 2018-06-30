@@ -4,29 +4,23 @@ import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.datastore.DataStore;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static cn.com.autohome.GStack.Basic.StoreUtils.storeTable;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.*;
 
 public class Store {
     @Step("SET:SUITE <name> <value>")
     public void storeSuite(String name, String value) {
-        name = fillArgs(name);
-        value = fillArgs(value);
         suiteDataStore.put(name, value);
     }
 
     @Step("SET:SPEC <name> <value>")
     public void storeSpec(String name, String value) {
-        name = fillArgs(name);
-        value = fillArgs(value);
+
         specDataStore.put(name, value);
     }
 
     @Step("SET:SCENARIO <name> <value>")
     public void storeScenario(String name, String value) {
-        name = fillArgs(name);
-        value = fillArgs(value);
         scenarioDataStore.put(name, value);
     }
 

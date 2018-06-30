@@ -5,7 +5,6 @@ import com.thoughtworks.gauge.Table;
 import com.thoughtworks.gauge.datastore.DataStore;
 import org.openqa.selenium.WebElement;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static cn.com.autohome.GStack.Basic.Core.print;
 import static cn.com.autohome.GStack.UI.Web.Core.getDriver;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
@@ -15,8 +14,6 @@ public class Elements {
 
     @Step("DEF <name> <selector>")
     public void defineElement(String name, String selector) {
-        name = fillArgs(name);
-        selector = fillArgs(selector);
         name = getKey(name);
         dataStore.put(name, selector);
     }
@@ -26,15 +23,14 @@ public class Elements {
         table.getTableRows().forEach(
                 row ->
                         dataStore.put(
-                                getKey(fillArgs(row.getCell("name"))),
-                                fillArgs(row.getCell("css"))
+                                getKey(row.getCell("name")),
+                                row.getCell("css")
                         )
         );
     }
 
     @Step("PRINTEL <name>")
     public void printElement(String name) {
-        name = fillArgs(name);
         print(String.format("name=%s", name));
         String key = getKey(name);
         print(String.format("key=%s", key));

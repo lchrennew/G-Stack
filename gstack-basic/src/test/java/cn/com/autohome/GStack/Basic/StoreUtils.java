@@ -7,8 +7,8 @@ import org.apache.calcite.linq4j.function.Predicate1;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.*;
+import static com.thoughtworks.gauge.datastore.DataStoreFactory.getScenarioDataStore;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class StoreUtils {
@@ -17,30 +17,21 @@ public class StoreUtils {
     public static final Predicate1<String> notKey = c -> !c.endsWith(KEY_SUFFIX);
 
     public static HashMap<String, String> gets(String[] args) {
-        DataStore scenarioDataStore = getScenarioDataStore();
-        DataStore specDataStore = getSpecDataStore();
-        DataStore suiteDataStore = getSuiteDataStore();
         HashMap<String, String> configs = new HashMap<>();
         Arrays.asList(args).forEach(arg -> {
-            String value = get(arg, scenarioDataStore, specDataStore, suiteDataStore);
+            String value = get(arg);
             configs.put(arg, value);
         });
         return configs;
     }
 
-    private static String get(String name) {
-        DataStore scenarioDataStore = getScenarioDataStore();
-        DataStore specDataStore = getSpecDataStore();
-        DataStore suiteDataStore = getSuiteDataStore();
-        return get(name, scenarioDataStore, specDataStore, suiteDataStore);
-    }
 
-    private static String get(String name, DataStore scenarioDataStore, DataStore specDataStore, DataStore suiteDataStore) {
-        String value = (String) scenarioDataStore.get(name);
+    private static String get(String name) {
+        String value = (String) getScenarioDataStore().get(name);
         if (value == null) {
-            value = (String) specDataStore.get(name);
+            value = (String) getSpecDataStore().get(name);
             if (value == null) {
-                value = (String) suiteDataStore.get(name);
+                value = (String) getSuiteDataStore().get(name);
                 if (value == null)
                     value = "";
             }
@@ -53,8 +44,8 @@ public class StoreUtils {
             storeDynamicTable(table, dataStore);
         else {
             table.getTableRows().forEach(row -> dataStore.put(
-                    fillArgs(row.getCell("name")),
-                    fillArgs(row.getCell("value"))));
+                    row.getCell("name"),
+                    row.getCell("value")));
         }
 
     }
@@ -80,7 +71,7 @@ public class StoreUtils {
                                         keyName,
                                         keys[i],
                                         valueColumn),
-                                fillArgs(values[i])
+                                values[i]
                         );
                     }
                 });

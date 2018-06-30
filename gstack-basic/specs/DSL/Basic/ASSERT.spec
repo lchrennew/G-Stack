@@ -8,3 +8,7 @@ Every heading in this file denotes a scenario. Every bulleted point denotes a st
 * ASSERT "1" "=" "1"
 * ASSERT "1" "!=" ""
 * ASSERT "1" "<>" "2"
+* ASSERT
+|actual|match|expected|
+|1|=|1|
+|2|=|2|

@@ -6,13 +6,11 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.List;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static cn.com.autohome.GStack.Http.DSL.Core.buildRequest;
 
 public class Body {
     @Step("BODY:CONTENT <body>")
     public void contentBody(String body) {
-        body = fillArgs(body);
         buildRequest().body(body);
     }
 
@@ -22,8 +20,8 @@ public class Body {
         RequestSpecification request = buildRequest();
         table.getTableRows().forEach(
                 row -> request.formParam(
-                        fillArgs(row.getCell("name")),
-                        fillArgs(row.getCell("value"))
+                        row.getCell("name"),
+                        row.getCell("value")
                 ));
     }
 
