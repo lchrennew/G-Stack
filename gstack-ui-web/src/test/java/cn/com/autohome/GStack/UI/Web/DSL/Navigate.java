@@ -2,13 +2,11 @@ package cn.com.autohome.GStack.UI.Web.DSL;
 
 import com.thoughtworks.gauge.Step;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static cn.com.autohome.GStack.UI.Web.Core.getDriver;
 
 public class Navigate {
     @Step("OPEN <url>")
     public void openUrl(String url) {
-        url = fillArgs(url);
         getDriver().get(url);
     }
 

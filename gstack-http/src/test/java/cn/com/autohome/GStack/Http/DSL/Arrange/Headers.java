@@ -7,13 +7,11 @@ import io.restassured.http.ContentType;
 import java.util.HashMap;
 import java.util.Map;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static cn.com.autohome.GStack.Http.DSL.Core.buildRequest;
 
 public class Headers {
     @Step("ACCEPT <mimeType>")
     public void accept(String mimeType) {
-        mimeType = fillArgs(mimeType);
         buildRequest().header("Accept", mimeType);
 
     }
@@ -22,25 +20,19 @@ public class Headers {
     @Step("COOKIE <table>")
     public void cookies(Table table) {
         Map<String, String> map = new HashMap<>();
-        table.getTableRows().forEach(row -> {
-            String name = fillArgs(row.getCell("name"));
-            String value = fillArgs(row.getCell("value"));
-            map.put(name, value);
-        });
+        table.getTableRows().forEach(row -> map.put(
+                row.getCell("name"),
+                row.getCell("value")));
         buildRequest().cookies(map);
     }
 
     @Step("COOKIE <name> <value>")
     public void cookie(String name, String value) {
-        name = fillArgs(name);
-        value = fillArgs(value);
         buildRequest().cookie(name, value);
     }
 
     @Step("HEADER <name> <value>")
     public void header(String name, String value) {
-        name = fillArgs(name);
-        value = fillArgs(value);
         buildRequest().header(name, value);
     }
 

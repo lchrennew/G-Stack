@@ -22,10 +22,10 @@ Every heading in this file denotes a scenario. Every bulleted point denotes a st
 * EXTRACT:COOKIE "x" "c3"
 * ASSERT "@{c3}" "=" ""
 
-## JSON PATH WITH JOIN
-* EXTRACT:JSONPATH "list.id" JOIN "id" TO
-|json|
-|A|
-|B|
-* ASSERT "@{json.A.id}" "=" "8"
-* ASSERT "@{json.B.id}" "=" "9"
+//## JSON PATH WITH JOIN
+//* EXTRACT:JSONPATH "list.id" JOIN "id" TO
+//|json|
+//|A|
+//|B|
+//* ASSERT "@{json.A.id}" "=" "8"
+//* ASSERT "@{json.B.id}" "=" "9"

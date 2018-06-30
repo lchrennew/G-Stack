@@ -7,7 +7,6 @@ import org.apache.calcite.linq4j.function.Predicate1;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static cn.com.autohome.GStack.Basic.Core.fillArgs;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.*;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
@@ -53,8 +52,8 @@ public class StoreUtils {
             storeDynamicTable(table, dataStore);
         else {
             table.getTableRows().forEach(row -> dataStore.put(
-                    fillArgs(row.getCell("name")),
-                    fillArgs(row.getCell("value"))));
+                    row.getCell("name"),
+                    row.getCell("value")));
         }
 
     }
@@ -80,7 +79,7 @@ public class StoreUtils {
                                         keyName,
                                         keys[i],
                                         valueColumn),
-                                fillArgs(values[i])
+                                values[i]
                         );
                     }
                 });
