@@ -16,7 +16,7 @@ public class DynamicAsserts {
 
 
     static final Map<String, AssertCall> ASSERTS = new HashMap<>();
-    private static final AssertCall ASSERT_EQ = Assert::assertNotEquals;
+    private static final AssertCall ASSERT_EQ = Assert::assertEquals;
     private static final AssertCall ASSERT_NE = Assert::assertNotEquals;
     private static final AssertCall ASSERT_CONTAINS = ((actual, expected) -> assertTrue(format("\"%s\" doesn't contains \"%s\"", actual, expected), actual.toString().contains(expected.toString())));
 
