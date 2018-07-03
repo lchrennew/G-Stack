@@ -2,7 +2,7 @@ package chun.li.GStack.Http;
 
 import com.thoughtworks.gauge.*;
 
-import static chun.li.GStack.Http.DSL.Core.setupRestAssuredWithEnvironment;
+import static chun.li.GStack.Http.Core.setupRestAssuredWithEnvironment;
 
 public class ExecutionHooks {
     @BeforeSuite

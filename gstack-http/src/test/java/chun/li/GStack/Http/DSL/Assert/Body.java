@@ -8,7 +8,7 @@ import org.hamcrest.Matchers;
 
 import java.util.List;
 
-import static chun.li.GStack.Http.DSL.Core.then;
+import static chun.li.GStack.Http.Core.then;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static java.lang.String.format;
 import static org.hamcrest.Matchers.*;
