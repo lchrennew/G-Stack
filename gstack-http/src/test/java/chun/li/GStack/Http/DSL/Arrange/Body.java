@@ -2,11 +2,11 @@ package chun.li.GStack.Http.DSL.Arrange;
 
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
-import io.restassured.specification.RequestSpecification;
+import org.apache.calcite.linq4j.ExtendedEnumerable;
+import org.apache.calcite.linq4j.Grouping;
 
-import java.util.List;
-
-import static chun.li.GStack.Http.DSL.Core.buildRequest;
+import static chun.li.GStack.Http.Core.buildRequest;
+import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class Body {
     @Step("BODY:CONTENT <body>")
@@ -16,13 +16,13 @@ public class Body {
 
     @Step("BODY:FORM <table>")
     public void formsBody(Table table) {
-        List<String> columns = table.getColumnNames();
-        RequestSpecification request = buildRequest();
-        table.getTableRows().forEach(
-                row -> request.formParam(
-                        row.getCell("name"),
-                        row.getCell("value")
-                ));
+        buildRequest().formParams(
+                asEnumerable(table.getTableRows())
+                        .groupBy(
+                                row->row.getCell("name"),
+                                r->r.getCell("value"))
+                        .toMap(Grouping::getKey, ExtendedEnumerable::toList)
+        );
     }
 
     @Step("BODY:FORM <name> <value>")

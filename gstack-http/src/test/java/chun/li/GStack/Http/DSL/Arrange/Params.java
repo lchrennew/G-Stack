@@ -8,20 +8,15 @@ import org.apache.calcite.linq4j.Grouping;
 import static chun.li.GStack.Http.Core.buildRequest;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
-public class Uri {
-    @Step("BASE <baseUri>")
-    public void baseURI(String baseUri) {
-        buildRequest().baseUri(baseUri);
+public class Params {
+    @Step("PARAM <name> <value>")
+    public void setParam(String name, String value) {
+        buildRequest().param(name, value);
     }
 
-    @Step("PATH <basePath>")
-    public void basePath(String basePath){
-        buildRequest().basePath(basePath);
-    }
-
-    @Step("QUERY <table>")
-    public void queries(Table table) {
-        buildRequest().queryParams(
+    @Step("PARAM <table>")
+    public void setParams(Table table){
+        buildRequest().params(
                 asEnumerable(table.getTableRows())
                         .groupBy(
                                 row->row.getCell("name"),
@@ -30,9 +25,4 @@ public class Uri {
         );
     }
 
-    @Step("QUERY <name> <value>")
-    public void query(String name, String value) {
-        buildRequest()
-                .queryParam(name, value);
-    }
 }

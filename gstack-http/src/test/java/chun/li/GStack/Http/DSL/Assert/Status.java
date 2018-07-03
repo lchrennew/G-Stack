@@ -2,7 +2,7 @@ package chun.li.GStack.Http.DSL.Assert;
 
 import com.thoughtworks.gauge.Step;
 
-import static chun.li.GStack.Http.DSL.Core.then;
+import static chun.li.GStack.Http.Core.then;
 
 public class Status {
 

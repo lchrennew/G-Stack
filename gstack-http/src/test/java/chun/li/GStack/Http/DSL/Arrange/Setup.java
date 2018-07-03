@@ -2,7 +2,7 @@ package chun.li.GStack.Http.DSL.Arrange;
 
 import com.thoughtworks.gauge.Step;
 
-import static chun.li.GStack.Http.DSL.Core.*;
+import static chun.li.GStack.Http.Core.*;
 
 public class Setup {
 

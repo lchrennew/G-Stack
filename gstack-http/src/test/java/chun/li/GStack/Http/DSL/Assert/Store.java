@@ -8,7 +8,7 @@ import com.thoughtworks.gauge.datastore.DataStore;
 import java.util.List;
 
 import static chun.li.GStack.Basic.StoreUtils.storeTable;
-import static chun.li.GStack.Http.DSL.Core.then;
+import static chun.li.GStack.Http.Core.then;
 import static com.thoughtworks.gauge.datastore.DataStoreFactory.getSpecDataStore;
 
 public class Store {

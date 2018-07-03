@@ -7,7 +7,7 @@ import io.restassured.http.ContentType;
 import java.util.HashMap;
 import java.util.Map;
 
-import static chun.li.GStack.Http.DSL.Core.buildRequest;
+import static chun.li.GStack.Http.Core.buildRequest;
 
 public class Headers {
     @Step("ACCEPT <mimeType>")
