@@ -7,16 +7,16 @@ import com.vladsch.flexmark.ast.Text;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import static java.util.Arrays.asList;
+import static java.util.Objects.requireNonNull;
 import static org.apache.calcite.linq4j.Linq4j.asEnumerable;
 
 public class SpecIndexer {
@@ -43,10 +43,15 @@ public class SpecIndexer {
         return null;
     }
 
-    public static List<SpecFile> buildIndex(String[] files) throws FileNotFoundException {
+    public static List<SpecFile> buildIndex(String... files) throws FileNotFoundException {
         List<SpecFile> idx = new ArrayList<>();
+        files = asEnumerable(files)
+                .selectMany(file -> asEnumerable(retrieveSpecs(file, ".spec")))
+                .toList()
+                .toArray(new String[0]);
         for (String file :
                 files) {
+
             SpecFile spedFile = new SpecFile(file);
             spedFile.addSpecs(loadSpecs(file));
             idx.add(spedFile);
@@ -109,4 +114,29 @@ public class SpecIndexer {
         return contentBuilder.toString();
     }
 
+    public static String[] retrieveSpecs(String path, String filePattern) {
+        System.out.print(new File("").getAbsolutePath());
+        Stack<File> dirs = new Stack<>();
+        List<File> files = new ArrayList<>();
+
+        File f0 = new File(path);
+        if (f0.isDirectory()) {
+            dirs.push(f0);
+            while (!dirs.empty()) {
+                File d0 = dirs.pop();
+                File[] d1 = d0.listFiles(File::isDirectory);
+                for (File d : requireNonNull(d1)) {
+                    dirs.push(d);
+                }
+                File[] f1 = d0.listFiles(File::isFile);
+                files.addAll(asList(requireNonNull(f1)));
+            }
+        } else
+            files.add(f0);
+
+        return asEnumerable(files)
+                .where(file -> file.getName().endsWith(filePattern))
+                .select(File::getPath).toList()
+                .toArray(new String[0]);
+    }
 }
