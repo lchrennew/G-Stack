@@ -10,6 +10,7 @@
         <module name="gstack-basic" />
         <module name="gstack-http" />
         <module name="gstack-mysql" />
+        <module name="gstack-suite-parser" />
         <module name="gstack-ui-web" />
         <module name="gstack-workspace" />
       </profile>
@@ -19,6 +20,7 @@
       <module name="gstack-basic" target="1.8" />
       <module name="gstack-http" target="1.8" />
       <module name="gstack-mysql" target="1.8" />
+      <module name="gstack-suite-parser" target="1.8" />
       <module name="gstack-ui-web" target="1.8" />
       <module name="gstack-workspace" target="1.8" />
     </bytecodeTargetLevel>
