@@ -1,5 +1,7 @@
 package chun.li.GStack.SuiteParser;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.util.List;
 
 public class Scenario {
@@ -12,5 +14,20 @@ public class Scenario {
         this.title = title;
         this.lineNumber = lineNumber;
         this.tags = tags;
+    }
+
+    @JsonProperty("title")
+    public String getTitle() {
+        return title;
+    }
+
+    @JsonProperty("line")
+    public Integer getLineNumber() {
+        return lineNumber;
+    }
+
+    @JsonProperty("tags")
+    public List<String> getTags() {
+        return tags;
     }
 }

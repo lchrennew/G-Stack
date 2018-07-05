@@ -40,7 +40,7 @@ public class SpecIndexer {
         } catch (PatternSyntaxException ex) {
             // Syntax error in the regular expression
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public static List<SpecFile> buildIndex(String... files) throws FileNotFoundException {

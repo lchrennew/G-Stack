@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="gstack-api-log" />
         <module name="gstack-basic" />
+        <module name="gstack-console-api" />
         <module name="gstack-http" />
         <module name="gstack-mysql" />
         <module name="gstack-suite-parser" />
@@ -18,8 +19,10 @@
     <bytecodeTargetLevel>
       <module name="gstack-api-log" target="1.8" />
       <module name="gstack-basic" target="1.8" />
+      <module name="gstack-console-api" target="9" />
       <module name="gstack-http" target="1.8" />
       <module name="gstack-mysql" target="1.8" />
+      <module name="gstack-ops-api" target="1.8" />
       <module name="gstack-suite-parser" target="1.8" />
       <module name="gstack-ui-web" target="1.8" />
       <module name="gstack-workspace" target="1.8" />
