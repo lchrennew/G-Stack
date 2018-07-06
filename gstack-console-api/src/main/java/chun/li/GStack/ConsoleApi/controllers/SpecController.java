@@ -2,17 +2,17 @@ package chun.li.GStack.ConsoleApi.controllers;
 
 import chun.li.GStack.SuiteParser.SpecFile;
 import chun.li.GStack.SuiteParser.SpecIndexer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -38,11 +38,37 @@ public class SpecController {
     @Value("${gstack.shell.charset}")
     String shellCharset;
 
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
+
+
     @RequestMapping(path = "/execute", method = GET)
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody
     UUID execute(@RequestParam(value = "file", required = false) String[] files,
-                 @RequestParam(value = "tags", required = false) String tags) throws IOException, InterruptedException {
+                 @RequestParam(value = "tags", required = false) String tags)
+            throws IOException, InterruptedException {
+
+        String shell = getShell(files, tags);
+        UUID uuid = randomUUID();
+        new Thread(() -> {
+            Runtime runtime = getRuntime();
+            try {
+                Process process = runtime.exec(new String[]{"cmd", "/C", shell}, null, new File(workspace));
+                BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
+                String sCurrentLine;
+                while ((sCurrentLine = br.readLine()) != null) {
+                    pushShellOutput(uuid, sCurrentLine);
+                }
+                pushShellEnd(uuid);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        return uuid;
+    }
+
+    private String getShell(@RequestParam(value = "file", required = false) String[] files, @RequestParam(value = "tags", required = false) String tags) {
         List<String> cmds = new ArrayList<>();
         cmds.add("gauge run");
         cmds.addAll(asList(files));
@@ -50,23 +76,16 @@ public class SpecController {
             cmds.add("--tags");
             cmds.add(String.format("\"%s\"", tags));
         }
-        String cmd = join(" ", cmds.toArray(new String[0]));
-
-        Runtime runtime = getRuntime();
-        // TODO: addShutdownHook to runtime
-        Process process = runtime.exec(new String[]{"cmd", "/C", cmd}, null, new File(workspace));
-
-
-        // return process.pid();
-        return randomUUID();
-        //
-//
-//        StringBuilder contentBuilder = new StringBuilder();
-//        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
-//        String sCurrentLine;
-//        while ((sCurrentLine = br.readLine()) != null) {
-//            contentBuilder.append(sCurrentLine).append("\n");
-//        }
-//        return contentBuilder.toString();
+        return join(" ", cmds.toArray(new String[0]));
     }
+
+    void pushShellOutput(UUID uuid, String message) {
+        messagingTemplate.convertAndSend("/specs/output/" + uuid, message);
+    }
+
+    void pushShellEnd(UUID uuid) {
+        messagingTemplate.convertAndSend("/specs/output/" + uuid, "!!!!!!");
+    }
+
+
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 import static chun.li.GStack.SuiteParser.SpecIndexer.buildIndex;
 
-public class Markdown {
+public class Demo {
 
     public static void main(String[] args) throws FileNotFoundException {
 
