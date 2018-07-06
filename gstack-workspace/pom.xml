@@ -44,7 +44,7 @@
         </dependency>
         <dependency>
             <groupId>chun.li</groupId>
-            <artifactId>gstack-basic</artifactId>
+            <artifactId>gstack-api-log</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
             <type>test-jar</type>

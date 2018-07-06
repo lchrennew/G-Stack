@@ -68,7 +68,7 @@ public class SpecController {
         return uuid;
     }
 
-    private String getShell(@RequestParam(value = "file", required = false) String[] files, @RequestParam(value = "tags", required = false) String tags) {
+    private String getShell(String[] files, String tags) {
         List<String> cmds = new ArrayList<>();
         cmds.add("gauge run");
         cmds.addAll(asList(files));
