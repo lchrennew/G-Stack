@@ -1,0 +1,7 @@
+﻿{
+  "presets": [ "react", "es2016", "stage-3" ],
+  "comments": false,
+  "minified": true,
+  "sourceMaps": true,
+  "retainLines": true
+}

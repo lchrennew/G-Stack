@@ -1,0 +1,85 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#gstack-console > .container {
+    padding: 60px 15px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.commit-tease {
+    position: relative;
+    padding: 10px;
+    margin-bottom: -1px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #586069;
+    background-color: #f1f8ff;
+    border: 1px solid #c8e1ff;
+    border-radius: 3px 3px 0 0;
+}
+
+.file-wrap {
+    margin-bottom: 10px;
+    border: 1px solid #dfe2e5;
+    border-top: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+table.files {
+    margin-bottom: 0;
+}
+
+table.files th.icon {
+    width: 17px;
+    padding-right: 2px;
+    padding-left: 10px;
+    text-align: center;
+    color: rgba(3, 47, 98, 0.55);
+}
+
+table.files th.content {
+    max-width: 180px;
+}
+
+table.files td.message {
+    max-width: 442px;
+    padding-left: 10px;
+    overflow: hidden;
+    color: #6a737d;
+}
+
+table.files td.actions {
+    width: 125px;
+    padding-right: 10px;
+    color: #6a737d;
+    text-align: right;
+    white-space: nowrap;
+}

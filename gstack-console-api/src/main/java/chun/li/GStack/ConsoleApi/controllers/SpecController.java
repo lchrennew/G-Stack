@@ -39,33 +39,54 @@ public class SpecController {
     String shellCharset;
 
     @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    private static SimpMessagingTemplate messagingTemplate;
 
 
     @RequestMapping(path = "/execute", method = GET)
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody
-    UUID execute(@RequestParam(value = "file", required = false) String[] files,
-                 @RequestParam(value = "tags", required = false) String tags)
+    UUID execute(
+            @RequestParam(value = "file", required = false) String[] files,
+            @RequestParam(value = "tags", required = false) String tags)
             throws IOException, InterruptedException {
-
-        String shell = getShell(files, tags);
         UUID uuid = randomUUID();
-        new Thread(() -> {
-            Runtime runtime = getRuntime();
-            try {
-                Process process = runtime.exec(new String[]{"cmd", "/C", shell}, null, new File(workspace));
-                BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
-                String sCurrentLine;
-                while ((sCurrentLine = br.readLine()) != null) {
-                    pushShellOutput(uuid, sCurrentLine);
-                }
-                pushShellEnd(uuid);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        executeShellAsync(getShell(files, tags), uuid);
         return uuid;
+    }
+
+    private void executeShellAsync(String shell, UUID uuid) {
+        new Thread(
+                () -> executeShell(
+                        shell,
+                        uuid,
+                        SpecController::pushShellOutput,
+                        SpecController::pushShellEnd))
+                .start();
+    }
+
+    @FunctionalInterface
+    public interface OnShellOutput {
+        public abstract void run(UUID uuid, String output);
+    }
+
+    @FunctionalInterface
+    public interface OnShellEnd {
+        public abstract void run(UUID uuid);
+    }
+
+    private void executeShell(String shell, UUID uuid, OnShellOutput onShellOutput, OnShellEnd onShellEnd) {
+        Runtime runtime = getRuntime();
+        try {
+            Process process = runtime.exec(new String[]{"cmd", "/C", shell}, null, new File(workspace));
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                onShellOutput.run(uuid, sCurrentLine);
+            }
+            onShellEnd.run(uuid);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String getShell(String[] files, String tags) {
@@ -79,11 +100,14 @@ public class SpecController {
         return join(" ", cmds.toArray(new String[0]));
     }
 
-    void pushShellOutput(UUID uuid, String message) {
+    private static void pushShellOutput(UUID uuid, String message) {
         messagingTemplate.convertAndSend("/specs/output/" + uuid, message);
     }
 
-    void pushShellEnd(UUID uuid) {
+    private static void pushShellEnd(UUID uuid) {
+//        Map<String, Object> closeHeader = new HashMap<>();
+//        closeHeader.putIfAbsent("Connection", "close");
+//        messagingTemplate.convertAndSend("/specs/output/" + uuid, "!!!!!!", closeHeader);
         messagingTemplate.convertAndSend("/specs/output/" + uuid, "!!!!!!");
     }
 
