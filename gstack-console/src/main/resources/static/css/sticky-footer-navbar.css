@@ -83,3 +83,12 @@ table.files td.actions {
     text-align: right;
     white-space: nowrap;
 }
+
+table.files td.actions a.link {
+    margin-left: 10px;
+    display: none;
+}
+
+table.files tr:hover td.actions a.link {
+    display: inline-block;
+}
