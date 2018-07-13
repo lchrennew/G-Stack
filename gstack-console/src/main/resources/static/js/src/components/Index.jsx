@@ -24,9 +24,9 @@ class Index extends React.Component {
         return <App>
             <Header/>
             <Switch>
-                <Route path="/suite/:suite/tree/:dir" component={Directory}/>
-                <Route path="/suite/:suite/clob/:dir" component={File}/>
-                <Route path="/suite/:suite" component={Suite}/>
+                <Route path="/:suite/tree/:dir" component={Directory}/>
+                <Route path="/:suite/clob/:dir" component={File}/>
+                <Route path="/:suite" component={Suite}/>
             </Switch>
             <Footer/>
         </App>

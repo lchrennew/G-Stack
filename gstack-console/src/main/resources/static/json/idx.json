@@ -1,0 +1,843 @@
+[
+  {
+    "file": ".\\gstack-workspace\\specs\\example.spec",
+    "specs": [
+      {
+        "title": "Specification Heading",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "Scenario Heading",
+            "lineNumber": 7,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-ui-web\\specs\\DSL\\UI\\Web.spec",
+    "specs": [
+      {
+        "title": "WebUI",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "访问百度",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-mysql\\specs\\DSL\\MySql\\INSERT.spec",
+    "specs": [
+      {
+        "title": "数据库插入",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "插入多行",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-mysql\\specs\\DSL\\MySql\\SQL.spec",
+    "specs": [
+      {
+        "title": "MySql",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "执行SQL\u0026检查SQL",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Assert\\BODY.spec",
+    "specs": [
+      {
+        "title": "响应内容检查",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "整体匹配",
+            "lineNumber": 6,
+            "tags": []
+          },
+          {
+            "title": "内容匹配",
+            "lineNumber": 16,
+            "tags": []
+          },
+          {
+            "title": "JSON PATH",
+            "lineNumber": 26,
+            "tags": []
+          },
+          {
+            "title": "JSON SCHEMA",
+            "lineNumber": 38,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Assert\\HEADER.spec",
+    "specs": [
+      {
+        "title": "响应头",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "检查HEADER头",
+            "lineNumber": 6,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Assert\\STATUS.spec",
+    "specs": [
+      {
+        "title": "检查响应状态",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "检查状态",
+            "lineNumber": 6,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Arrange\\BODY.spec",
+    "specs": [
+      {
+        "title": "请求内容",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "文本内容",
+            "lineNumber": 6,
+            "tags": []
+          },
+          {
+            "title": "表单内容",
+            "lineNumber": 9,
+            "tags": []
+          },
+          {
+            "title": "文件内容",
+            "lineNumber": 15,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Arrange\\HEADER.spec",
+    "specs": [
+      {
+        "title": "请求头",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "ACCEPT头",
+            "lineNumber": 6,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "CONTENTTYPE头",
+            "lineNumber": 9,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "COOKIES头",
+            "lineNumber": 12,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "HEADER头",
+            "lineNumber": 20,
+            "tags": [
+              "wip"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Arrange\\PARAMS.spec",
+    "specs": [
+      {
+        "title": "Param参数",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "PARAM参数",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Arrange\\REQUEST.spec",
+    "specs": [
+      {
+        "title": "构造请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "构造Forms Request",
+            "lineNumber": 2,
+            "tags": []
+          },
+          {
+            "title": "构造Json Request",
+            "lineNumber": 7,
+            "tags": []
+          },
+          {
+            "title": "构造Text Request",
+            "lineNumber": 13,
+            "tags": []
+          },
+          {
+            "title": "新需求",
+            "lineNumber": 19,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Arrange\\URI.spec",
+    "specs": [
+      {
+        "title": "URL装配",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "QUERY",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\After\\RETURN.spec",
+    "specs": [
+      {
+        "title": "RETURN",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "JSON PATH",
+            "lineNumber": 8,
+            "tags": []
+          },
+          {
+            "title": "CONTENT",
+            "lineNumber": 12,
+            "tags": []
+          },
+          {
+            "title": "HEADER",
+            "lineNumber": 16,
+            "tags": []
+          },
+          {
+            "title": "COOKIE",
+            "lineNumber": 20,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\CHECKOUT.spec",
+    "specs": [
+      {
+        "title": "CHECKOUT 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\COPY.spec",
+    "specs": [
+      {
+        "title": "COPY 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\DELETE.spec",
+    "specs": [
+      {
+        "title": "DELETE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\GET.spec",
+    "specs": [
+      {
+        "title": "GET 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "普通GET",
+            "lineNumber": 8,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "认证GET",
+            "lineNumber": 12,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "Cookie",
+            "lineNumber": 17,
+            "tags": [
+              "wip"
+            ]
+          },
+          {
+            "title": "传参",
+            "lineNumber": 22,
+            "tags": [
+              "wip"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\HEAD.spec",
+    "specs": [
+      {
+        "title": "HEAD 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\LOCK.spec",
+    "specs": [
+      {
+        "title": "LOCK 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\M-SEARCH.spec",
+    "specs": [
+      {
+        "title": "M-SEARCH 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\MERGE.spec",
+    "specs": [
+      {
+        "title": "MERGE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\MKACTIVITY.spec",
+    "specs": [
+      {
+        "title": "MKACTIVITY 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\MKCOL.spec",
+    "specs": [
+      {
+        "title": "MKCOL 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\MOVE.spec",
+    "specs": [
+      {
+        "title": "MOVE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\NOTIFY.spec",
+    "specs": [
+      {
+        "title": "NOTIFY 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\OPTIONS.spec",
+    "specs": [
+      {
+        "title": "OPTIONS 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\PATCH.spec",
+    "specs": [
+      {
+        "title": "PATCH 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\POST.spec",
+    "specs": [
+      {
+        "title": "POST 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "POST字符串",
+            "lineNumber": 6,
+            "tags": []
+          },
+          {
+            "title": "POST表单",
+            "lineNumber": 12,
+            "tags": []
+          },
+          {
+            "title": "POST HAR",
+            "lineNumber": 21,
+            "tags": []
+          },
+          {
+            "title": "DEMO",
+            "lineNumber": 29,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\PROPFIND.spec",
+    "specs": [
+      {
+        "title": "PROPFIND 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\PROPPATCH.spec",
+    "specs": [
+      {
+        "title": "SUBSCRIBE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\PURGE.spec",
+    "specs": [
+      {
+        "title": "PURGE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\PUT.spec",
+    "specs": [
+      {
+        "title": "PUT 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\REPORT.spec",
+    "specs": [
+      {
+        "title": "REPORT 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\SEARCH.spec",
+    "specs": [
+      {
+        "title": "SEARCH 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\SUBSCRIBE.spec",
+    "specs": [
+      {
+        "title": "SEARCH 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\TRACE.spec",
+    "specs": [
+      {
+        "title": "TRACE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\UNLOCK.spec",
+    "specs": [
+      {
+        "title": "UNLOCK 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-http\\specs\\DSL\\Http\\Act\\UNSUBSCRIBE.spec",
+    "specs": [
+      {
+        "title": "UNSUBSCRIBE 请求",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "test",
+            "lineNumber": 3,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-console\\target\\classes\\node_modules\\node-sass\\src\\libsass\\contrib\\libsass.spec",
+    "specs": []
+  },
+  {
+    "file": ".\\gstack-console\\src\\main\\resources\\node_modules\\node-sass\\src\\libsass\\contrib\\libsass.spec",
+    "specs": []
+  },
+  {
+    "file": ".\\gstack-basic\\specs\\DSL\\Basic\\ASSERT.spec",
+    "specs": [
+      {
+        "title": "断言",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "ASSERT",
+            "lineNumber": 6,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-basic\\specs\\DSL\\Basic\\STORE.spec",
+    "specs": [
+      {
+        "title": "STORE",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "保存配置并打印\u0026断言",
+            "lineNumber": 19,
+            "tags": []
+          },
+          {
+            "title": "动态表",
+            "lineNumber": 36,
+            "tags": []
+          },
+          {
+            "title": "动态表(显式key)",
+            "lineNumber": 45,
+            "tags": []
+          },
+          {
+            "title": "间接寻址",
+            "lineNumber": 55,
+            "tags": []
+          },
+          {
+            "title": "动态参数",
+            "lineNumber": 58,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": ".\\gstack-api-log\\specs\\HTTPLOG.spec",
+    "specs": [
+      {
+        "title": "记录请求日志",
+        "lineNumber": 0,
+        "tags": [],
+        "scenarios": [
+          {
+            "title": "请求日志",
+            "lineNumber": 2,
+            "tags": []
+          }
+        ]
+      }
+    ]
+  }
+]

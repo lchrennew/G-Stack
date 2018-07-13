@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/(?!js/|lib/|css/|index|favicon\\.ico).+").setViewName("forward:/");
+        registry.addViewController("/(?!js/|lib/|css/|json/|index|favicon\\.ico).+").setViewName("forward:/");
 
     }
 

@@ -6,11 +6,10 @@ import ReduxThunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 
-
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
-import reducer from './repository/reducer'
-
+// import reducer from './repository/reducer'
+import reducer from './reducers'
 import Index from './components/Index'
 
 let devTool = typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
@@ -35,7 +34,5 @@ class Console extends React.Component {
 
 jQuery(() =>
     render(
-        (
-            <Console {...{store}} />
-        ),
+        <Console {...{store}} />,
         document.getElementById('gstack-console')))

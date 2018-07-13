@@ -1,5 +1,6 @@
 import React from "react";
 import Main from "./Main";
+import VisibleDir from "./VisibleDir";
 
 class Directory extends React.Component {
 
@@ -14,6 +15,16 @@ class Directory extends React.Component {
         let {match: {params: {suite}}} = this.props
         return <Main>
             <h1 className="mt-5">{suite}/{this.getDir()}</h1>
+            <div className="row">
+                <div className="col">
+                    <div className="commit-tease">
+                        <div className="mr-auto">test</div>
+                    </div>
+                    <div className="file-wrap">
+                        <VisibleDir dir={this.getDir()}/>
+                    </div>
+                </div>
+            </div>
         </Main>
     }
 }
