@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
-import {addToCart, execDir} from "../actions";
+import {addToCart, execDir, fetchIndex} from "../actions";
 import Dir from "./Dir";
+import jQuery from 'jquery'
 
 
 const buildDirIndex = (idx) => {
@@ -18,8 +19,9 @@ const buildDirIndex = (idx) => {
             pointer[seg] = null
             prev = seg
         })
-        Object.assign(dirIdx, obj)
+        jQuery.extend(true, dirIdx, obj)
     })
+    console.log(dirIdx)
     return dirIdx
 }
 
@@ -53,26 +55,7 @@ const convertToItems = (dirObj) => {
 // index <= state.index
 // dir <= props.dir
 const getVisibleItems = (index, dir) => {
-    let idx = index.idx
-    if (!idx) {
-        idx = [{
-            "file": ".\\gstack-workspace\\specs\\example.spec",
-            "specs": [
-                {
-                    "title": "Specification Heading",
-                    "lineNumber": 0,
-                    "tags": [],
-                    "scenarios": [
-                        {
-                            "title": "Scenario Heading",
-                            "lineNumber": 7,
-                            "tags": []
-                        }
-                    ]
-                }
-            ]
-        }]
-    }
+    let idx = index.idx || []
     // idx: see json/idx.json
     let dirObj = seekIndex(idx, dir)
     return convertToItems(dirObj)

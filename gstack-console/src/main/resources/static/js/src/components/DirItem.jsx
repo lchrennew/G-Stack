@@ -7,12 +7,11 @@ class DirItem extends React.Component {
     getLink() {
         let {match: {isExact, params: {dir, suite}, url}, location: {pathname}, name, itemtype} = this.props
         let branch = itemtype === 'document' ? 'clob' : 'tree'
-        return isExact ?
-            dir ?
+        return dir ?
+            isExact ?
                 ['', suite, branch, dir, name].join('/') :
-                ['', suite, branch, name].join('/') :
-            ['', suite, branch, dir, pathname.substr(url.length).replace('/', ''), name].join('/')
-
+                ['', suite, branch, dir, pathname.substr(url.length).replace('/', ''), name].join('/') :
+            ['', suite, branch, name].join('/')
     }
 
     render() {

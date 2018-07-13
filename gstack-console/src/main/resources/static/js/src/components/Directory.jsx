@@ -1,6 +1,7 @@
 import React from "react";
 import Main from "./Main";
 import VisibleDir from "./VisibleDir";
+import IndexProvider from "./IndexProvider";
 
 class Directory extends React.Component {
 
@@ -17,12 +18,14 @@ class Directory extends React.Component {
             <h1 className="mt-5">{suite}/{this.getDir()}</h1>
             <div className="row">
                 <div className="col">
-                    <div className="commit-tease">
-                        <div className="mr-auto">test</div>
-                    </div>
-                    <div className="file-wrap">
-                        <VisibleDir dir={this.getDir()}/>
-                    </div>
+                    <IndexProvider>
+                        <div className="commit-tease">
+                            <div className="mr-auto">test</div>
+                        </div>
+                        <div className="file-wrap">
+                            <VisibleDir dir={this.getDir()}/>
+                        </div>
+                    </IndexProvider>
                 </div>
             </div>
         </Main>
