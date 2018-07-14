@@ -92,3 +92,13 @@ table.files td.actions a.link {
 table.files tr:hover td.actions a.link {
     display: inline-block;
 }
+
+.feather {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}

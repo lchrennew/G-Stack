@@ -21,7 +21,6 @@ const buildDirIndex = (idx) => {
         })
         jQuery.extend(true, dirIdx, obj)
     })
-    console.log(dirIdx)
     return dirIdx
 }
 
@@ -46,7 +45,7 @@ const convertToItems = (dirObj) => {
     for (let p in dirObj) {
         let item = {name: p}
         let i = dirObj[p]
-        item.itemtype = i == null ? 'document' : 'folder'
+        item.itemtype = i == null ? 'file' : 'folder'
         items.push(item)
     }
     return items

@@ -53,18 +53,21 @@ public class SpecIndexer {
                 files) {
 
             SpecFile spedFile = new SpecFile(file);
-            spedFile.addSpecs(loadSpecs(file));
-            idx.add(spedFile);
+            Spec spec = loadSpec(file);
+            if (spec != null) {
+                spedFile.setSpec(loadSpec(file));
+                idx.add(spedFile);
+            }
         }
         return idx;
     }
 
-    private static List<Spec> loadSpecs(String file) {
+    private static Spec loadSpec(String file) {
         String fileContent = loadTextFile(file);
         return parseMarkdown(fileContent);
     }
 
-    public static List<Spec> parseMarkdown(String fileContent) {
+    public static Spec parseMarkdown(String fileContent) {
         List<Spec> specs = new ArrayList<>();
         Parser parser = Parser.builder(options).build();
         Document document = parser.parse(fileContent);
@@ -87,8 +90,12 @@ public class SpecIndexer {
             heading = (Heading) heading.getNextAny(Heading.class);
         }
 
-
-        return specs;
+        if (specs.size() > 1) {
+            throw new UnsupportedOperationException(
+                    String.format("There should be only one spec in each Spec file!\n%s", fileContent));
+        } else if (specs.size() == 0)
+            return null;
+        return specs.get(0);
     }
 
     private static List<String> getTags(Heading heading) {

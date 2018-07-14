@@ -17,15 +17,9 @@ const mapStateToProps = (state, props) => {
 
 
 class IndexProvider extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {ready: false}
-    }
-
     async componentDidMount() {
         const {loadIndex, match: {params: {suite}}} = this.props
         await loadIndex(suite)
-        this.setState({ready: true})
     }
 
     render() {

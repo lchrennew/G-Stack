@@ -2,9 +2,7 @@
 
 import React from 'react'
 import DirItem from "./DirItem";
-import ParentDirItem from "./ParentDirItem";
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import {ParentDirItem} from "./ParentDirItem";
 
 
 class Dir extends React.Component{
