@@ -4,7 +4,6 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/Application.java</file>
           <file>file://$MODULE_DIR$/src/main/java/chun/li/GStack/ConsoleApi/websockets/WebSocketConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/chun/li/GStack/ConsoleApi/Application.java</file>
         </fileset>

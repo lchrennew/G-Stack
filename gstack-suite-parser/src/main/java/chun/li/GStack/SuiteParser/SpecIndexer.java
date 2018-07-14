@@ -122,11 +122,11 @@ public class SpecIndexer {
     }
 
     public static String[] retrieveSpecs(String path, String filePattern) {
-        System.out.print(new File("").getAbsolutePath());
         Stack<File> dirs = new Stack<>();
         List<File> files = new ArrayList<>();
 
         File f0 = new File(path);
+
         if (f0.isDirectory()) {
             dirs.push(f0);
             while (!dirs.empty()) {
@@ -143,7 +143,8 @@ public class SpecIndexer {
 
         return asEnumerable(files)
                 .where(file -> file.getName().endsWith(filePattern))
-                .select(File::getPath).toList()
+                .select(File::getPath)
+                .toList()
                 .toArray(new String[0]);
     }
 }

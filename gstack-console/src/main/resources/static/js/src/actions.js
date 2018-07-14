@@ -8,6 +8,12 @@ const api = (endpoint, ...args) => async (dispatch) => {
     return response
 }
 
+const json = (body, opt) => Object.assign({}, opt, {
+    method: 'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(body),
+})
+
 export const addToCart = (suite, ...dirs) => ({
     type: 'ADD_TO_CART',
     suite,
@@ -63,4 +69,20 @@ export const fetchIndex = (suite) => (dispatch, getState) => {
         return dispatch(_fetchIndex(suite))
     }
     else return Promise.resolve()
+}
+
+const _executeScenario = (suite, path) => async dispatch => {
+    let response = await api(`specs/execute`,
+        json({suite, files: [path]},
+            {credentials: 'include'})
+    )(dispatch)
+    if (response.ok) {
+        console.log(await response.json())
+    }
+}
+
+
+export const executeScenario = (suite, path) => (dispatch, getState) => {
+
+    return dispatch(_executeScenario(suite, path))
 }
