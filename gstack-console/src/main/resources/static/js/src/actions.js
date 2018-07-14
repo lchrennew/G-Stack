@@ -1,12 +1,9 @@
 import fetch from 'cross-fetch'
+import Stomp from 'stompjs'
+import SockJS from 'sockjs-client'
 
 const webApi = 'localhost:8082'
-const api = (endpoint, ...args) => async (dispatch) => {
-    let response = await fetch(`http://${webApi}/${endpoint}`, ...args)
-    if (response.status === 401)
-        dispatch(actions.ui.status(response.status))
-    return response
-}
+const api = (endpoint, ...args) => async (dispatch) => await fetch(`//${webApi}/${endpoint}`, ...args)
 
 const json = (body, opt) => Object.assign({}, opt, {
     method: 'POST',
@@ -71,18 +68,45 @@ export const fetchIndex = (suite) => (dispatch, getState) => {
     else return Promise.resolve()
 }
 
-const _executeScenario = (suite, path) => async dispatch => {
+const connect = (uuid, onPrint, onEnd) => {
+    let socket = new SockJS(`http://${webApi}/gstack-console-websocket`),
+        stompClient = Stomp.over(socket)
+    stompClient.connect({}, function (frame) {
+        stompClient.subscribe(`/specs/output/` + uuid, function (message) {
+            if (message.headers['Connection'] !== 'Close') {
+                onPrint && onPrint(message.body)
+            }
+            else {
+                onEnd && onEnd(message.body === '0')
+                stompClient.disconnect()
+            }
+        })
+    })
+}
+
+const _executeScenario = (suite, path) => (onStart, onEnd) => async dispatch => {
     let response = await api(`specs/execute`,
         json({suite, files: [path]},
             {credentials: 'include'})
     )(dispatch)
     if (response.ok) {
-        console.log(await response.json())
+        let uuid = await response.json()
+        console.log(uuid)
+        onStart ? onStart() : console.log(uuid)
+        connect(uuid, console.log,
+            result => {
+                onEnd ? onEnd(result) : console.log(result)
+            })
     }
 }
 
 
-export const executeScenario = (suite, path) => (dispatch, getState) => {
+export const executeScenario =
+    (suite, path) =>
+        (onStart, onEnd) =>
+            (dispatch, getState) =>
+                dispatch(
+                    _executeScenario
+                    (suite, path)
+                    (onStart, onEnd))
 
-    return dispatch(_executeScenario(suite, path))
-}

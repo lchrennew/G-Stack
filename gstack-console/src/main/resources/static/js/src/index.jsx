@@ -11,6 +11,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 // import reducer from './repository/reducer'
 import reducer from './reducers'
 import Index from './components/Index'
+import Placeholder from "./components/Placeholder";
+import {NotificationManager} from "./components/Contexts";
 
 let devTool = typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
 
@@ -23,11 +25,14 @@ class Console extends React.Component {
     render() {
         let {store} = this.props
         return (
-            <Provider {...{store}}>
-                <Router>
-                    <Route path="/" component={Index}/>
-                </Router>
-            </Provider>
+            <Placeholder>
+                <Provider {...{store}}>
+                    <Router>
+                        <Route path="/" component={Index}/>
+                    </Router>
+                </Provider>
+                <NotificationManager/>
+            </Placeholder>
         )
     }
 }

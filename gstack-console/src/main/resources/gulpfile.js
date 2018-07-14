@@ -64,6 +64,9 @@ gulp.task('rollup:js', ['babel:jsx'], function (cb) {
             ['react-router', 'ReactRouter'],
             ['react-router-dom', 'ReactRouterDOM'],
             ['cross-fetch', 'fetch'],
+            ['stompjs', 'Stomp'],
+            ['sockjs-client', 'SockJS'],
+            ['react-notification-system', 'ReactNotificationSystem'],
         ],
         shell = `rollup ${entry} -o ${output} -f umd -g ${globals.map(x=>x.join(':')).join(',')}`
 

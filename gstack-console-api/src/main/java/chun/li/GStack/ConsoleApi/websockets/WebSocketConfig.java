@@ -16,7 +16,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/gstack-console-websocket").withSockJS();
+        registry
+                .addEndpoint("/gstack-console-websocket")
+                .setAllowedOrigins("*")
+                .withSockJS();
     }
 
 }

@@ -11,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static java.lang.Runtime.getRuntime;
 import static java.lang.String.join;
@@ -79,7 +77,7 @@ public class SpecController {
 
     @FunctionalInterface
     public interface OnShellEnd {
-        public abstract void run(UUID uuid, SimpMessagingTemplate template);
+        public abstract void run(UUID uuid, int exitValue, SimpMessagingTemplate template);
     }
 
     private void executeShell(String shell, UUID uuid, OnShellOutput onShellOutput, OnShellEnd onShellEnd) {
@@ -91,7 +89,8 @@ public class SpecController {
             while ((sCurrentLine = br.readLine()) != null) {
                 onShellOutput.run(uuid, sCurrentLine, messagingTemplate);
             }
-            onShellEnd.run(uuid, messagingTemplate);
+
+            onShellEnd.run(uuid, process.exitValue(), messagingTemplate);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,11 +111,9 @@ public class SpecController {
         template.convertAndSend("/specs/output/" + uuid, message);
     }
 
-    private static void pushShellEnd(UUID uuid, SimpMessagingTemplate template) {
-//        Map<String, Object> closeHeader = new HashMap<>();
-//        closeHeader.putIfAbsent("Connection", "close");
-//        messagingTemplate.convertAndSend("/specs/output/" + uuid, "!!!!!!", closeHeader);
-        template.convertAndSend("/specs/output/" + uuid, "!!!!!!");
+    private static void pushShellEnd(UUID uuid, int exitValue, SimpMessagingTemplate template) {
+        Map<String, Object> closeHeader = Map.of("Connection", "Close");
+        template.convertAndSend("/specs/output/" + uuid, exitValue, closeHeader);
     }
 
 
