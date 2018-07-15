@@ -3,6 +3,7 @@ import Icon from "./Icon";
 import {withRouter} from "react-router-dom";
 // import {executeScenario} from "../actions";
 import ExecuteButton from "./ExecuteButton";
+import Tags from "./Tags";
 //
 // const mapDispatchToProps = dispatch => {
 //     return {
@@ -37,7 +38,7 @@ class ScenarioItem extends React.Component {
         return <tr>
             <th scope="row" className="icon"><Icon name="activity"/></th>
             <td className="content">{title}</td>
-            <td className="message">{tags.length > 0 ? <span><Icon name="tag"/>{tags.join(', ')}</span> : null}</td>
+            <td className="message"><Tags tags={tags}/></td>
             <td className="actions">
                 <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`场景:${title}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>

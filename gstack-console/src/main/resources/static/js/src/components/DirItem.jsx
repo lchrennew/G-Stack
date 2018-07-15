@@ -3,6 +3,7 @@ import React from 'react'
 import {Link, withRouter} from "react-router-dom";
 import Icon from "./Icon";
 import ExecuteButton from "./ExecuteButton";
+import Tags from "./Tags";
 
 class DirItem extends React.Component {
     buildLink(prefix) {
@@ -26,12 +27,12 @@ class DirItem extends React.Component {
     render() {
         // itemtype: folder => /tree/**
         // itemtype: file => /clob/**
-        let {name, itemtype, match: {params: {suite}}} = this.props
+        let {name, itemtype, tags = [], match: {params: {suite}}} = this.props
         let link = this.getLink()
         return <tr>
             <th scope="row" className="icon"><Icon name={itemtype}/></th>
             <td className="content"><Link to={link}>{name}</Link></td>
-            <td className="message">&nbsp;</td>
+            <td className="message"><Tags tags={tags}/></td>
             <td className="actions">
                 <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`${itemtype}:${name}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>
