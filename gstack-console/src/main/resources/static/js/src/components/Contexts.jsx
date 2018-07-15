@@ -48,7 +48,7 @@ class ShellOutput extends React.Component {
     }
 
 }
-
+//    "Content-Type": "text/plain; charset\u003dutf-8"
 export class ShellManager extends React.Component {
 
     render() {

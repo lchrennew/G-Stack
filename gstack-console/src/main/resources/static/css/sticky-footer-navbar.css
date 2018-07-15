@@ -115,4 +115,5 @@ table.files tr:hover td.actions a.link {
 
 .shell p {
     margin-bottom: 0;
+    white-space: pre-wrap;
 }

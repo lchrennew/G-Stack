@@ -117,6 +117,4 @@ public class SpecController {
         Map<String, Object> closeHeader = Map.of("Connection", "Close");
         template.convertAndSend("/specs/output/" + uuid, exitValue, closeHeader);
     }
-
-
 }

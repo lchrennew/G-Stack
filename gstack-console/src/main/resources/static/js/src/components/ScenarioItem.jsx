@@ -39,7 +39,7 @@ class ScenarioItem extends React.Component {
             <td className="content">{title}</td>
             <td className="message">{tags.length > 0 ? <span><Icon name="tag"/>{tags.join(', ')}</span> : null}</td>
             <td className="actions">
-                <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={title}/>
+                <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`场景:${title}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>
             </td>
         </tr>

@@ -19,18 +19,6 @@ class ExecuteButton extends React.Component {
     onStart() {
         let {title} = this.props
         openShell
-        // notify({
-        //     title: '开始执行',
-        //     message: `场景：${title}`,
-        //     level: 'info',
-        //     position: 'tr',
-        //     action: {
-        //         label: '查看输出',
-        //         callback: () => {
-        //             // todo: show console output
-        //         }
-        //     }
-        // })
     }
 
     onEnd(result) {
@@ -38,7 +26,7 @@ class ExecuteButton extends React.Component {
 
         notify({
             title: `执行${result ? '成功' : '失败'}`,
-            message: `场景：${title}`,
+            message: `${title}`,
             level: result ? 'success' : 'err',
             position: 'tr',
         })
