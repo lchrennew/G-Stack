@@ -83,7 +83,9 @@ public class SpecController {
     private void executeShell(String shell, UUID uuid, OnShellOutput onShellOutput, OnShellEnd onShellEnd) {
         Runtime runtime = getRuntime();
         try {
-            Process process = runtime.exec(new String[]{"cmd", "/C", shell}, null, new File(workspace));
+            String[] shellArgs = new String[]{"cmd", "/C", shell};
+            Process process = runtime.exec(shellArgs, null, new File(workspace));
+            System.out.println(String.join(" ", shellArgs));
             BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {

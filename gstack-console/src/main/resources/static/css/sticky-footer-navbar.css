@@ -102,3 +102,17 @@ table.files tr:hover td.actions a.link {
     stroke-linejoin: round;
     fill: none;
 }
+
+.shell {
+    padding: 1rem;
+    height: 400px;
+    overflow-y: auto;
+    background: black;
+    color: white;
+    font-family: Lucida Console;
+    font-size: 10px;
+}
+
+.shell p {
+    margin-bottom: 0;
+}

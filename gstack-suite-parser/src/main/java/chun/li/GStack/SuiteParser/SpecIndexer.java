@@ -79,7 +79,7 @@ public class SpecIndexer {
         while (heading != null) {
             int level = heading.getLevel();
             String title = heading.getText().toString();
-            Integer lineNumber = heading.getLineNumber();
+            Integer lineNumber = heading.getLineNumber() + 1;
             List<String> tags = getTags(heading);
             if (level == SPEC) {
                 scenarios = new ArrayList<>();

@@ -1,15 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {executeScenario} from "../actions"
-import {notify} from "./Contexts";
+import {notify, openShell, closeShell, printShell} from "./Contexts";
 import Icon from "./Icon";
 
 const mapDispatchToProps = dispatch => ({
     executeScenario:
         (suite, path) =>
-            (onStart, onEnd) =>
+            (onStart, onPrint, onEnd) =>
                 dispatch(
-                    executeScenario(suite, path)(onStart, onEnd)),
+                    executeScenario(suite, path)(onStart, onPrint, onEnd)),
 })
 
 const mapStateToProps = (state, props) => ({})
@@ -18,18 +18,19 @@ class ExecuteButton extends React.Component {
 
     onStart() {
         let {title} = this.props
-        notify({
-            title: '开始执行',
-            message: `场景：${title}`,
-            level: 'info',
-            position: 'tr',
-            action: {
-                label: '查看输出',
-                callback: () => {
-                    // todo: show console output
-                }
-            }
-        })
+        openShell
+        // notify({
+        //     title: '开始执行',
+        //     message: `场景：${title}`,
+        //     level: 'info',
+        //     position: 'tr',
+        //     action: {
+        //         label: '查看输出',
+        //         callback: () => {
+        //             // todo: show console output
+        //         }
+        //     }
+        // })
     }
 
     onEnd(result) {
@@ -41,13 +42,21 @@ class ExecuteButton extends React.Component {
             level: result ? 'success' : 'err',
             position: 'tr',
         })
+        // closeShell()
     }
 
-
+    onPrint(line) {
+        printShell(line)
+    }
     execute(e) {
         e.preventDefault();
         let {suite, executeScenario, path} = this.props
-        executeScenario(suite, path)(this.onStart.bind(this), this.onEnd.bind(this))
+        executeScenario(suite, path)
+        (
+            this.onStart.bind(this),
+            this.onPrint.bind(this),
+            this.onEnd.bind(this)
+        )
     }
 
     render() {

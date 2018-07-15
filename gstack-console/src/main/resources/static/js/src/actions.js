@@ -68,7 +68,7 @@ export const fetchIndex = (suite) => (dispatch, getState) => {
     else return Promise.resolve()
 }
 
-const connect = (uuid, onPrint, onEnd) => {
+const printOutput = (uuid, onPrint, onEnd) => {
     let socket = new SockJS(`http://${webApi}/gstack-console-websocket`),
         stompClient = Stomp.over(socket)
     stompClient.connect({}, function (frame) {
@@ -84,29 +84,29 @@ const connect = (uuid, onPrint, onEnd) => {
     })
 }
 
-const _executeScenario = (suite, path) => (onStart, onEnd) => async dispatch => {
+const _executeScenario = (suite, path) => (onStart, onPrint, onEnd) => async dispatch => {
+    onStart && onStart()
     let response = await api(`specs/execute`,
         json({suite, files: [path]},
             {credentials: 'include'})
     )(dispatch)
     if (response.ok) {
         let uuid = await response.json()
+        onPrint && onPrint(`Session ID: ${uuid}`)
         console.log(uuid)
-        onStart ? onStart() : console.log(uuid)
-        connect(uuid, console.log,
-            result => {
-                onEnd ? onEnd(result) : console.log(result)
-            })
+        printOutput(uuid,
+            onPrint ? onPrint : console.log,
+            onEnd ? onEnd : console.log)
     }
 }
 
 
 export const executeScenario =
     (suite, path) =>
-        (onStart, onEnd) =>
+        (onStart, onPrint, onEnd) =>
             (dispatch, getState) =>
                 dispatch(
                     _executeScenario
                     (suite, path)
-                    (onStart, onEnd))
+                    (onStart, onPrint, onEnd))
 

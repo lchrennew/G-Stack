@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="test-libs" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.thoughtworks.gauge:gauge-java:0.6.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.reflections:reflections:0.9.11" level="project" />
@@ -76,6 +77,5 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okhttp3:okhttp:3.9.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
-    <orderEntry type="library" name="test-libs" level="project" />
   </component>
 </module>
