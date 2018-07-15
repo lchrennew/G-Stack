@@ -4,6 +4,7 @@ import {Link, withRouter} from "react-router-dom";
 import Icon from "./Icon";
 import ExecuteButton from "./ExecuteButton";
 import Tags from "./Tags";
+import DirLink from "./DirLink";
 
 class DirItem extends React.Component {
     buildLink(prefix) {
@@ -31,7 +32,7 @@ class DirItem extends React.Component {
         let link = this.getLink()
         return <tr>
             <th scope="row" className="icon"><Icon name={itemtype}/></th>
-            <td className="content"><Link to={link}>{name}</Link></td>
+            <td className="content"><DirLink to={link} dir={name}/></td>
             <td className="message"><Tags tags={tags}/></td>
             <td className="actions">
                 <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`${itemtype}:${name}`}/>

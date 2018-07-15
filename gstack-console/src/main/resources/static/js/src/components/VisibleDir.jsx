@@ -21,23 +21,47 @@ const buildDirIndex = (idx) => {
         })
         jQuery.extend(true, dirIdx, obj)
     })
+
+
     return dirIdx
+}
+
+const compress = (idxNode) => {
+    let idx = jQuery.extend(true, {}, idxNode)
+    // todo: compress idx
+    let queue = Object.keys(idx).map(key => ({key, node: idx}))
+    while (queue.length > 0) {
+        let item = queue.shift(), child = item.node[item.key]
+        if (child != null) {
+            let keys = Object.keys(child)
+            if (keys.length === 1) {
+                let key = [item.key, keys[0]].join('/')
+                queue.push({key, node: item.node})
+                item.node[key] = child[keys[0]]
+                delete item.node[item.key]
+            }
+            else if (keys.length > 1) {
+                queue.push([...keys.map(key => ({key, node: item.node[key]}))])
+            }
+        }
+    }
+    return idx
 }
 
 const seekIndex = (idx, dir) => {
     let dirIdx = buildDirIndex(idx)
     let segs = dir.split(/[\\\/]/i)
-    let dirObj = dirIdx
+    let idxNode = dirIdx
     segs.map(seg => {
         if (seg) {
-            dirObj = dirObj[seg]
-            if (typeof dirObj === "undefined")
+            idxNode = idxNode[seg]
+            if (typeof idxNode === "undefined")
                 throw `dir not exists ${dir}`
-            else if (dirObj == null)
+            else if (idxNode == null)
                 throw `dir is actually a file ${dir}`
         }
     })
-    return dirObj;
+    return compress(idxNode);
 }
 
 const convertToItems = (dirObj) => {

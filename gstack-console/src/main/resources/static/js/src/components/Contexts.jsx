@@ -55,3 +55,4 @@ export class ShellManager extends React.Component {
         return <ShellOutput ref={shellRef}/>
     }
 }
+
