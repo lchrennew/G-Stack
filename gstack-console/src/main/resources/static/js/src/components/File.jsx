@@ -5,7 +5,8 @@ import ScenarioList from "./ScenarioList";
 import {SpecTitle} from "./SpecProvider";
 import {Link} from "react-router-dom";
 import {ParentLink} from "./ParentDirItem";
-import Icon from "./Icon";
+import {Breadcrumb, Divider} from "semantic-ui-react";
+import Placeholder from "./Placeholder";
 
 
 class File extends React.Component {
@@ -19,22 +20,32 @@ class File extends React.Component {
 
     render() {
         let {match: {params: {suite}}} = this.props
+        let segs = this.getDir().split('/')
         return <Main>
-            <h1 className="mt-5">{suite}/{this.getDir()}</h1>
-            <div className="row">
-                <div className="col">
-                    <IndexProvider>
-                        <div className="commit-tease">
-                            <div className="mr-auto">
-                                <SpecTitle/>
-                            </div>
-                        </div>
-                        <div className="file-wrap">
-                            <ScenarioList/>
-                        </div>
-                    </IndexProvider>
+            <Breadcrumb size="huge">
+                <Link to={`/${suite}`} className="section"><b>{suite}</b></Link>
+                <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                {
+                    segs.map((path, k) => k + 1 < segs.length ? <Placeholder key={k}>
+                        <Link
+                            to={`/${suite}/tree/${segs.slice(0, k + 1).join('/')}`}
+                            className="section">{path}</Link>
+                        <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                    </Placeholder> : <Breadcrumb.Section key={k}>{path}</Breadcrumb.Section>)
+                }
+            </Breadcrumb>
+            <Divider hidden/>
+            <IndexProvider>
+                <div className="commit-tease">
+                    <div className="mr-auto">
+                        <SpecTitle/>
+                    </div>
                 </div>
-            </div>
+                <div className="file-wrap">
+                    <ScenarioList/>
+                </div>
+                <Divider hidden/>
+            </IndexProvider>
         </Main>
     }
 }

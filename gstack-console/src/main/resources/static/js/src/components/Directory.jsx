@@ -2,6 +2,9 @@ import React from "react";
 import Main from "./Main";
 import VisibleDir from "./VisibleDir";
 import IndexProvider from "./IndexProvider";
+import {Breadcrumb, Divider, Grid, GridRow} from "semantic-ui-react";
+import {Link} from "react-router-dom";
+import Placeholder from "./Placeholder";
 
 class Directory extends React.Component {
 
@@ -14,20 +17,30 @@ class Directory extends React.Component {
 
     render() {
         let {match: {params: {suite}}} = this.props
+        let segs = this.getDir().split('/')
         return <Main>
-            <h1 className="mt-5">{suite}/{this.getDir()}</h1>
-            <div className="row">
-                <div className="col">
-                    <IndexProvider>
-                        <div className="commit-tease">
-                            <div className="mr-auto">test</div>
-                        </div>
-                        <div className="file-wrap">
-                            <VisibleDir dir={this.getDir()}/>
-                        </div>
-                    </IndexProvider>
+            <Breadcrumb size="huge">
+                <Link to={`/${suite}`} className="section"><b>{suite}</b></Link>
+                <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                {
+                    segs.map((path, k) => <Placeholder key={k}>
+                        <Link to={`/${suite}/tree/${segs.slice(0, k + 1).join('/')}`}
+                              className="section">{path}</Link>
+                        <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                    </Placeholder>)
+                }
+            </Breadcrumb>
+            <Divider hidden />
+            <IndexProvider>
+                <div className="commit-tease">
+                    <div className="mr-auto">test</div>
                 </div>
-            </div>
+                <div className="file-wrap">
+                    <VisibleDir dir={this.getDir()}/>
+                </div>
+                <Divider hidden/>
+            </IndexProvider>
+
         </Main>
     }
 }

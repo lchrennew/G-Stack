@@ -1,6 +1,6 @@
 import React from 'react'
 import NotificationSystem from "react-notification-system";
-import {Modal, ModalBody, ModalHeader} from "reactstrap";
+import {Modal} from 'semantic-ui-react'
 
 const notifyRef = React.createRef()
 
@@ -24,6 +24,7 @@ class ShellOutput extends React.Component {
     constructor(props) {
         super(props)
         this.state = {open: false, lines: []}
+        this.messagesEnd = React.createRef()
     }
 
     start() {
@@ -35,15 +36,19 @@ class ShellOutput extends React.Component {
     }
 
     print(line) {
-        this.setState({open: true, lines: [...shellRef.current.state.lines, line]})
+        this.setState({open: true, lines: [...this.state.lines, line]})
+        this.messagesEnd.current.scrollIntoView({behavior: "smooth"});
     }
 
     render() {
-        return <Modal isOpen={this.state.open} size="lg">
-            <ModalHeader toggle={this.close.bind(this)}>执行输出</ModalHeader>
-            <ModalBody className="shell">
+        return <Modal open={this.state.open} size="fullscreen" closeIcon>
+            <Modal.Header>执行输出</Modal.Header>
+            <Modal.Content scrolling className="shell">
                 {this.state.lines.map((line, i) => <p key={i}>{line}</p>)}
-            </ModalBody>
+                <div
+                     ref={this.messagesEnd}>
+                </div>
+            </Modal.Content>
         </Modal>
     }
 

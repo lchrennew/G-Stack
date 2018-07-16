@@ -4,6 +4,7 @@ import {withRouter} from "react-router-dom";
 // import {executeScenario} from "../actions";
 import ExecuteButton from "./ExecuteButton";
 import Tags from "./Tags";
+import {Table} from 'semantic-ui-react'
 //
 // const mapDispatchToProps = dispatch => {
 //     return {
@@ -35,15 +36,15 @@ class ScenarioItem extends React.Component {
     }
     render() {
         let {title, tags, match: {params: {suite}}} = this.props
-        return <tr>
-            <th scope="row" className="icon"><Icon name="activity"/></th>
-            <td className="content">{title}</td>
-            <td className="message"><Tags tags={tags}/></td>
-            <td className="actions">
+        return <Table.Row>
+            <Table.Cell scope="row" className="icon"><Icon name="activity"/></Table.Cell>
+            <Table.Cell className="content">{title}</Table.Cell>
+            <Table.Cell className="message"><Tags tags={tags}/></Table.Cell>
+            <Table.Cell className="actions">
                 <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`场景:${title}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>
-            </td>
-        </tr>
+            </Table.Cell>
+        </Table.Row>
     }
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import {fetchIndex} from "../actions";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {Dimmer, Loader} from "semantic-ui-react";
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -24,7 +25,9 @@ class IndexProvider extends React.Component {
 
     render() {
         if (this.props.needShowLoading) {
-            return <div>Loading...</div>
+            return <Dimmer active>
+                <Loader size='massive'>Loading</Loader>
+            </Dimmer>
         }
         else {
             return this.props.children

@@ -3,11 +3,14 @@
 html {
     position: relative;
     min-height: 100%;
+    height: auto;
 }
 
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    height: auto;
+    line-height: 9px;
 }
 
 .footer {
@@ -57,10 +60,14 @@ table.files {
     margin-bottom: 0;
 }
 
-table.files th.icon {
+/*table.files td {*/
+    /*padding: .3rem;*/
+/*}*/
+
+table.files td.icon {
     width: 17px;
     padding-right: 2px;
-    padding-left: 10px;
+    padding-left: 10px !important;
     text-align: center;
     color: rgba(3, 47, 98, 0.55);
 }
@@ -80,7 +87,7 @@ table.files td.message {
 
 table.files td.actions {
     width: 125px;
-    padding-right: 10px;
+    padding-right: 10px !important;
     color: #6a737d;
     text-align: right;
     white-space: nowrap;
@@ -105,7 +112,7 @@ table.files tr:hover td.actions a.link {
     fill: none;
 }
 
-.shell {
+.modal > .content.shell {
     padding: 1rem;
     height: 400px;
     overflow-y: auto;

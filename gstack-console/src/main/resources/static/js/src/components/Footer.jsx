@@ -9,6 +9,7 @@ class Footer extends React.Component {
                 <span className="text-muted">Place sticky footer content here.</span>
             </div>
         </footer>
+
     }
 }
 

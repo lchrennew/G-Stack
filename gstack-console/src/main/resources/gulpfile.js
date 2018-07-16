@@ -68,6 +68,7 @@ gulp.task('rollup:js', ['babel:jsx'], function (cb) {
             ['sockjs-client', 'SockJS'],
             ['react-notification-system', 'ReactNotificationSystem'],
             ['reactstrap','Reactstrap'],
+            ['semantic-ui-react','semanticUIReact'],
         ],
         shell = `rollup ${entry} -o ${output} -f umd -g ${globals.map(x=>x.join(':')).join(',')}`
 
