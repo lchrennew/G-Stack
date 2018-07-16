@@ -114,7 +114,10 @@ public class SpecController {
     }
 
     private static void pushShellEnd(UUID uuid, int exitValue, SimpMessagingTemplate template) {
-        Map<String, Object> closeHeader = Map.of("Connection", "Close");
+
+        // Map<String, Object> closeHeader = Map.of("Connection", "Close");
+        Map<String, Object> closeHeader = new HashMap<>();
+        closeHeader.put("Connection", "Close");
         template.convertAndSend("/specs/output/" + uuid, exitValue, closeHeader);
     }
 }
