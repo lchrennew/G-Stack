@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import ExecuteButton from "./ExecuteButton";
 import Tags from "./Tags";
 import DirLink from "./DirLink";
+import { Table } from 'semantic-ui-react'
 
 class DirItem extends React.Component {
     buildLink(prefix) {
@@ -30,15 +31,15 @@ class DirItem extends React.Component {
         // itemtype: file => /clob/**
         let {name, itemtype, tags = [], match: {params: {suite}}} = this.props
         let link = this.getLink()
-        return <tr>
-            <th scope="row" className="icon"><Icon name={itemtype}/></th>
-            <td className="content"><DirLink to={link} dir={name}/></td>
-            <td className="message"><Tags tags={tags}/></td>
-            <td className="actions">
+        return <Table.Row>
+            <Table.Cell scope="row" className="icon"><Icon name={itemtype}/></Table.Cell>
+            <Table.Cell className="content"><DirLink to={link} dir={name}/></Table.Cell>
+            <Table.Cell className="message"><Tags tags={tags}/></Table.Cell>
+            <Table.Cell className="actions">
                 <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`${itemtype}:${name}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>
-            </td>
-        </tr>
+            </Table.Cell>
+        </Table.Row>
     }
 }
 

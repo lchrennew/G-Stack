@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, withRouter} from "react-router-dom";
 import Icon from "./Icon";
+import {Table} from 'semantic-ui-react'
 
 class parentLink extends React.Component {
     getParentLink() {
@@ -26,17 +27,17 @@ export const ParentLink = withRouter(parentLink)
 export class ParentDirItem extends React.Component {
     render() {
         if (this.props.visible)
-            return <tr>
-                <th className="icon"/>
-                <td>
+            return <Table.Row>
+                <Table.Cell className="icon"/>
+                <Table.Cell>
                     <ParentLink>
                         [
                         <Icon name="corner-left-up"/>
                         ..]</ParentLink>
-                </td>
-                <td/>
-                <td/>
-            </tr>
+                </Table.Cell>
+                <Table.Cell/>
+                <Table.Cell/>
+            </Table.Row>
         else
             return null
     }
