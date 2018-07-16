@@ -6,7 +6,7 @@ import File from './File';
 import App from "./App";
 import Header from './Header'
 import Footer from "./Footer";
-import Main from "./Main";
+import Suites from "./Suites";
 
 
 class Index extends React.Component {
@@ -27,6 +27,7 @@ class Index extends React.Component {
                 <Route path="/:suite/tree/:dir" component={Directory}/>
                 <Route path="/:suite/clob/:dir" component={File}/>
                 <Route path="/:suite" component={Suite}/>
+                <Route path="/" component={Suites}/>
             </Switch>
             <Footer/>
         </App>

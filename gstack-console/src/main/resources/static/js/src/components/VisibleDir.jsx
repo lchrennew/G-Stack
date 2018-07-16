@@ -31,7 +31,8 @@ const compress = (idxNode) => {
     // todo: compress idx
     let queue = Object.keys(idx).map(key => ({key, node: idx}))
     while (queue.length > 0) {
-        let item = queue.shift(), child = item.node[item.key]
+        let item = queue.shift(),
+            child = item.node[item.key]
         if (child != null) {
             let keys = Object.keys(child)
             if (keys.length === 1) {
@@ -41,7 +42,7 @@ const compress = (idxNode) => {
                 delete item.node[item.key]
             }
             else if (keys.length > 1) {
-                queue.push([...keys.map(key => ({key, node: item.node[key]}))])
+                queue.push(...keys.map(key => ({key, node: child})))
             }
         }
     }
