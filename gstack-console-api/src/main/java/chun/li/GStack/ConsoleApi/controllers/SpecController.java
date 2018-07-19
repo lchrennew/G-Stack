@@ -42,8 +42,7 @@ public class SpecController {
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody
     UUID execute(
-            @RequestBody ExecuteOptions options)
-            throws IOException, InterruptedException {
+            @RequestBody ExecuteOptions options) {
         return execute(options.files, options.tags);
     }
 
@@ -53,8 +52,7 @@ public class SpecController {
     @ResponseBody
     UUID execute(
             @RequestParam(value = "file", required = false) String[] files,
-            @RequestParam(value = "tags", required = false) String tags)
-            throws IOException, InterruptedException {
+            @RequestParam(value = "tags", required = false) String tags) {
         UUID uuid = randomUUID();
         executeShellAsync(getShell(files, tags), uuid);
         return uuid;
