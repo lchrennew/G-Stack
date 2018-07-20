@@ -2,6 +2,7 @@ import React from 'react'
 import Main from "./Main";
 import SuiteItem from "./SuiteItem";
 import { Card } from 'semantic-ui-react'
+import CreateSuiteButton from "./CreateSuiteButton";
 
 class Suites extends React.Component {
     render() {
@@ -14,6 +15,7 @@ class Suites extends React.Component {
                         {
                             suites.map((suite, i) => <SuiteItem key={i} {...suite}/>)
                         }
+                        <CreateSuiteButton/>
                     </Card.Group>
                 </div>
             </div>
