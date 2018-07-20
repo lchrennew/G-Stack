@@ -1,4 +1,4 @@
-package chun.li.GStack.ConsoleApi.websockets;
+package chun.li.GStack.Console.api.websockets;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

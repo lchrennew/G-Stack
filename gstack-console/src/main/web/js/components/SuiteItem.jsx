@@ -5,7 +5,7 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 class SuiteItem extends React.Component {
     render() {
-        let {title, description, dir} = this.props
+        let {title, description} = this.props
         return <Card>
             <Card.Content>
                 <Card.Header className="card-title">{title}</Card.Header>
@@ -13,7 +13,7 @@ class SuiteItem extends React.Component {
 
             </Card.Content>
             <Card.Content extra>
-                <Link to={dir}>进入</Link>
+                <Link to={title}>进入</Link>
             </Card.Content>
         </Card>
     }

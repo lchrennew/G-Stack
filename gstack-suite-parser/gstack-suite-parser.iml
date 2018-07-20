@@ -50,55 +50,6 @@
     <orderEntry type="library" name="Maven: com.openhtmltopdf:openhtmltopdf-pdfbox:0.0.1-RC13" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.pdfbox:xmpbox:2.0.8" level="project" />
-    <orderEntry type="library" name="Maven: de.rototor.pdfbox:graphics2d:0.12" level="project" />
-    <orderEntry type="library" name="Maven: com.openhtmltopdf:openhtmltopdf-rtl-support:0.0.1-RC13" level="project" />
-    <orderEntry type="library" name="Maven: com.ibm.icu:icu4j:59.1" level="project" />
-    <orderEntry type="library" name="Maven: com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:0.0.1-RC13" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-profile-pegdown:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-util:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-youtrack-converter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-all:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-abbreviation:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-admonition:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-anchorlink:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-aside:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-attributes:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-autolink:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: org.nibor.autolink:autolink:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-definition:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-emoji:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-enumerated-reference:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-escaped-character:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-footnotes:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-gfm-issues:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-gfm-strikethrough:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-gfm-tables:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-gfm-tasklist:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-gfm-users:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-jekyll-front-matter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-jekyll-tag:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-ins:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-xwiki-macros:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-superscript:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-tables:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-toc:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-typographic:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-wikilink:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-yaml-front-matter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-ext-youtube-embedded:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-formatter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-html-parser:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.10.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-jira-converter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.vladsch.flexmark:flexmark-pdf-converter:0.34.2" level="project" />
-    <orderEntry type="library" name="Maven: com.openhtmltopdf:openhtmltopdf-core:0.0.1-RC13" level="project" />
-    <orderEntry type="library" name="Maven: com.openhtmltopdf:openhtmltopdf-pdfbox:0.0.1-RC13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:xmpbox:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: de.rototor.pdfbox:graphics2d:0.12" level="project" />

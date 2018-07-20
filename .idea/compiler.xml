@@ -6,15 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gstack-api-log" />
-        <module name="gstack-basic" />
         <module name="gstack-console" />
         <module name="gstack-console-api" />
-        <module name="gstack-http" />
-        <module name="gstack-mysql" />
         <module name="gstack-suite-parser" />
-        <module name="gstack-ui-web" />
-        <module name="gstack-workspace" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

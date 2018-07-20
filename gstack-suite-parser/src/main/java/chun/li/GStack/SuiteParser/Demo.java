@@ -12,7 +12,7 @@ public class Demo {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        List<SpecFile> idx = buildIndex(".");
+        List<SpecFile> idx = buildIndex(null);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         System.out.println(gson.toJson(idx));

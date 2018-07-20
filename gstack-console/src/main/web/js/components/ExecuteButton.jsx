@@ -27,7 +27,7 @@ class ExecuteButton extends React.Component {
         notify({
             title: `执行${result ? '成功' : '失败'}`,
             message: `${title}`,
-            level: result ? 'success' : 'error',
+                level: result ? 'success' : 'error',
             position: 'tr',
         })
         // closeShell()

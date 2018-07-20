@@ -36,7 +36,7 @@ class DirItem extends React.Component {
             <Table.Cell className="content"><DirLink to={link} dir={name}/></Table.Cell>
             <Table.Cell className="message"><Tags tags={tags}/></Table.Cell>
             <Table.Cell className="actions">
-                <ExecuteButton suite={suite} path={this.buildLink(['.'])} title={`${itemtype}:${name}`}/>
+                <ExecuteButton suite={suite} path={this.buildLink([])} title={`${itemtype}:${name}`}/>
                 <a href="#" className="link"><Icon name="clock"/></a>
             </Table.Cell>
         </Table.Row>

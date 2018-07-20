@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, props) => {
     return {
-        needShowLoading: state.index.idx.length === 0
+        needShowLoading: state.index.idx == null
     }
 }
 

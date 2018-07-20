@@ -43,27 +43,29 @@ public class SpecIndexer {
         return new ArrayList<>();
     }
 
-    public static List<SpecFile> buildIndex(String... files) throws FileNotFoundException {
+    public static List<SpecFile> buildIndex(String root, String... files) throws FileNotFoundException {
         List<SpecFile> idx = new ArrayList<>();
+        if (files == null || files.length == 0)
+            files = new String[]{root};
         files = asEnumerable(files)
-                .selectMany(file -> asEnumerable(retrieveSpecs(file, ".spec")))
+                .selectMany(file -> asEnumerable(retrieveSpecs(root, file, ".spec")))
                 .toList()
                 .toArray(new String[0]);
         for (String file :
                 files) {
 
             SpecFile spedFile = new SpecFile(file);
-            Spec spec = loadSpec(file);
+            Spec spec = loadSpec(root, file);
             if (spec != null) {
-                spedFile.setSpec(loadSpec(file));
+                spedFile.setSpec(loadSpec(root, file));
                 idx.add(spedFile);
             }
         }
         return idx;
     }
 
-    private static Spec loadSpec(String file) {
-        String fileContent = loadTextFile(file);
+    private static Spec loadSpec(String root, String file) {
+        String fileContent = loadTextFile(root, file);
         return parseMarkdown(fileContent);
     }
 
@@ -107,13 +109,15 @@ public class SpecIndexer {
         return tags;
     }
 
-    private static String loadTextFile(String file) {
+    private static String loadTextFile(String root, String file) {
         StringBuilder contentBuilder = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        File textFile = new File(root, file);
+        try (BufferedReader br =
+                     new BufferedReader(new FileReader(textFile))) {
 
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) {
-                contentBuilder.append(sCurrentLine).append("\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                contentBuilder.append(line).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,11 +125,13 @@ public class SpecIndexer {
         return contentBuilder.toString();
     }
 
-    public static String[] retrieveSpecs(String path, String filePattern) {
+    private static String[] retrieveSpecs(String root, String path, String filePattern) {
+        if (root == null) root = ".";
+        File fr = new File(root),
+                f0 = path != null ? new File(fr, path) : fr;
+
         Stack<File> dirs = new Stack<>();
         List<File> files = new ArrayList<>();
-
-        File f0 = new File(path);
 
         if (f0.isDirectory()) {
             dirs.push(f0);
@@ -140,10 +146,12 @@ public class SpecIndexer {
             }
         } else
             files.add(f0);
-
+        final int rootLength = fr.getPath().length() + 1;
         return asEnumerable(files)
                 .where(file -> file.getName().endsWith(filePattern))
-                .select(File::getPath)
+                .select(file -> {
+                    return file.getPath().substring(rootLength);
+                })
                 .toList()
                 .toArray(new String[0]);
     }

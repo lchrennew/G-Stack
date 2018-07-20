@@ -17,6 +17,7 @@
           <root url="file://$MODULE_DIR$/gen" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/web" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -32,6 +33,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/web" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/resources/static/js/babel" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/resources/static/js/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/web" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="10" jdkType="JavaSDK" />

@@ -52,12 +52,12 @@ const receiveIndex = (idx, suite) => ({
 
 const _fetchIndex = suite => async dispatch => {
     dispatch(requestIndex(suite))
-    let response = await api(`specs/index`, {credentials: 'include'})(dispatch)
+    let response = await api(`suites/${suite}/index`, {credentials: 'include'})(dispatch)
     if (response.ok) {
         let idx = await response.json()
         return dispatch(receiveIndex(idx, suite))
     }
-    return []
+    return null
 }
 
 export const fetchIndex = (suite) => (dispatch, getState) => {
@@ -86,7 +86,7 @@ const printOutput = (uuid, onPrint, onEnd) => {
 
 const _executeScenario = (suite, path) => (onStart, onPrint, onEnd) => async dispatch => {
     onStart && onStart()
-    let response = await api(`specs/execute`,
+    let response = await api(`suites/${suite}/execute`,
         json({suite, files: [path]},
             {credentials: 'include'})
     )(dispatch)
