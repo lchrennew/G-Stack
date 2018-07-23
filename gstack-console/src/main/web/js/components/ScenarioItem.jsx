@@ -28,7 +28,7 @@ class ScenarioItem extends React.Component {
 
         let body = dir ?
             isExact ?
-                [dir, name] :
+                [dir] :
                 [dir, pathname.substr(url.length).replace('/', '')] :
             []
         prefix.push(...body)

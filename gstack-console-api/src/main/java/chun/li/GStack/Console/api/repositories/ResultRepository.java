@@ -5,9 +5,7 @@ import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Collection;
-
 public interface ResultRepository extends Neo4jRepository<Result, Long> {
-    @Query("MATCH (s:Suite)-[s:GENERATED]->(r:Result) WHERE s.name = $suite RETURN r,s")
-    Collection<Result> findAllBySuite(@Param("suite") String suite);
+    @Query("MATCH (s:Suite)-[:RESULT_IN]->(r:Result) WHERE s.title = $suite RETURN r")
+    Iterable<Result> findAllBySuite(@Param("suite") String suite);
 }

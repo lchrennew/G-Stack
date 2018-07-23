@@ -24,6 +24,9 @@ export const executing = (execid) => ({
     execid,
 })
 
+/*************************
+ 目录索引
+ ***************************/
 const requestIndex = (suite) => ({
     type: 'FETCH_INDEX',
     suite,
@@ -57,6 +60,9 @@ export const fetchIndex = (suite) => (dispatch, getState) => {
     else return Promise.resolve()
 }
 
+/*************************
+ 测试套件
+ ***************************/
 const requestSuites = () => ({
     type: 'FETCH_SUITES'
 })
@@ -86,6 +92,9 @@ export const fetchSuites = () => (dispatch, getState) => {
     else return Promise.resolve()
 }
 
+/*************************
+ 新建测试套件
+ ***************************/
 const creatingSuite = suite => ({type: 'CREATING_SUITE', suite})
 const createdSuite = suite => ({type: 'CREATED_SUITE', suite})
 const _createSuite = (suite) => async dispatch => {
@@ -104,7 +113,9 @@ export const createSuite = suite => (dispatch, getState) => {
 }
 
 
-
+/*************************
+ 执行
+ ***************************/
 const printOutput = (uuid, onPrint, onEnd) => {
     let socket = new SockJS(`http://${webApi}/gstack-console-websocket`),
         stompClient = Stomp.over(socket)
@@ -147,3 +158,39 @@ export const executeScenario =
                     (suite, path)
                     (onStart, onPrint, onEnd))
 
+
+/*************************
+ 执行结果
+ ***************************/
+const requestResults = suite => ({
+    type: 'FETCH_RESULTS',
+    suite
+})
+
+const receiveResults = (suite, list) => ({
+    type: 'RECEIVE_RESULTS',
+    list,
+    suite,
+})
+
+const _fetchResults = suite => async dispatch => {
+    dispatch(requestResults(suite))
+    let response = await api(`suites/${suite}/logs`, {credentials: 'include'})(dispatch)
+    if (response.ok) {
+        let list = await response.json()
+        return dispatch(receiveResults(suite, list))
+    }
+    return null
+}
+
+const resultsNotFetching = state => !state.results.fetch
+const resultsSuiteChanged = (state, suite) => suite !== state.results.suite
+
+export const fetchResults = suite => (dispatch, getState) => {
+    let state = getState()
+    if (resultsNotFetching(state)
+        && resultsSuiteChanged(state, suite)) {
+        return dispatch(_fetchResults(suite))
+    }
+    else return Promise.resolve()
+}

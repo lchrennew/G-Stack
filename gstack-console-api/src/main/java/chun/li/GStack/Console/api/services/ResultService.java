@@ -17,4 +17,9 @@ public class ResultService {
     public Result save(Result result) {
         return repository.save(result);
     }
+
+    @Transactional(readOnly = true)
+    public Iterable<Result> findBySuiteTitle(String title) {
+        return repository.findAllBySuite(title);
+    }
 }

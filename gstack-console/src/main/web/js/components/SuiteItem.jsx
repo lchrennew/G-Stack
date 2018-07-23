@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import {Card} from 'semantic-ui-react'
+import {Button, Card} from 'semantic-ui-react'
 import ExecuteButton from "./ExecuteButton";
 import Icon from "./Icon";
 
@@ -11,13 +11,15 @@ class SuiteItem extends React.Component {
         return <Card>
             <Card.Content>
                 <Card.Header className="card-title">{title}</Card.Header>
-                <Card.Description>{description}</Card.Description>
-
-            </Card.Content>
-            <Card.Content extra>
-                <Link to={title} className="ui basic large button">
-                    <Icon name="box" size={16}/> 进入</Link>
-                <ExecuteButton suite={title} path="." className="ui basic large button blue" title={`Suite:${title}`}/>
+                <div className="ui three buttons">
+                    <Link to={title} className="ui basic large button">
+                        <Icon name="box" size={24}/></Link>
+                    <Link to={`${title}/logs`} className="ui basic large button">
+                        <Icon name="clock" size={24}/>
+                    </Link>
+                    <ExecuteButton suite={title} size={24} className="ui basic large button"
+                                   title={`Suite:${title}`}/>
+                </div>
             </Card.Content>
         </Card>
     }

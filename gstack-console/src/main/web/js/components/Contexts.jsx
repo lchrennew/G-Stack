@@ -1,6 +1,7 @@
 import React from 'react'
 import NotificationSystem from "react-notification-system";
 import {Modal} from 'semantic-ui-react'
+import Icon from "./Icon";
 
 const notifyRef = React.createRef()
 
@@ -41,7 +42,11 @@ class ShellOutput extends React.Component {
     }
 
     render() {
-        return <Modal open={this.state.open} size="fullscreen" closeIcon>
+        return <Modal open={this.state.open}
+                      size="fullscreen"
+                      closeOnEscape={true}
+                      closeOnDimmerClick={true}
+                      onClose={this.close.bind(this)}>
             <Modal.Header>执行输出</Modal.Header>
             <Modal.Content scrolling className="shell">
                 {this.state.lines.map((line, i) => <p key={i}>{line}</p>)}

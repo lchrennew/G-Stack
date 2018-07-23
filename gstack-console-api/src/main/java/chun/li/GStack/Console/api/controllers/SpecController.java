@@ -1,10 +1,8 @@
 package chun.li.GStack.Console.api.controllers;
 
 import chun.li.GStack.Console.api.ExecuteOptions;
-import chun.li.GStack.Console.api.domain.Execution;
 import chun.li.GStack.Console.api.domain.Result;
 import chun.li.GStack.Console.api.domain.Suite;
-import chun.li.GStack.Console.api.services.ExecutionService;
 import chun.li.GStack.Console.api.services.ResultService;
 import chun.li.GStack.Console.api.services.SuiteService;
 import chun.li.GStack.SuiteParser.SpecFile;
@@ -34,7 +32,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class SpecController {
 
     final static Pattern reportDate = Pattern.compile("\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01]) ([01]\\d|2[0-4])\\.[0-6]\\d\\.[0-6]\\d");
-    private final ExecutionService executionService;
     private final SuiteService suiteService;
     private final ResultService resultService;
     private final SimpMessagingTemplate messagingTemplate;
@@ -48,10 +45,8 @@ public class SpecController {
     @Value("${gstack.workspace.specs}")
     private String specs;
 
-    public SpecController(ExecutionService executionService,
-                          SuiteService suiteService,
+    public SpecController(SuiteService suiteService,
                           ResultService resultService, SimpMessagingTemplate messagingTemplate) {
-        this.executionService = executionService;
         this.suiteService = suiteService;
         this.resultService = resultService;
         this.messagingTemplate = messagingTemplate;
@@ -85,13 +80,27 @@ public class SpecController {
         UUID uuid = randomUUID();
         files = asEnumerable(files)
                 .select(
-                        file -> Paths
-                                .get(specs, suite, file)
-                                .toString())
+                        file -> this.normalizeFile(suite, file))
                 .toList()
                 .toArray(new String[0]);
         executeShellAsync(suite, getShell(files, tags), uuid);
         return uuid;
+    }
+
+    private static final Pattern fileWithLn = Pattern.compile("(?<file>.*):(?<ln>\\d+)$");
+
+    private String normalizeFile(String suite, String file) {
+        Matcher matcher = fileWithLn.matcher(file);
+        if (matcher.find()) {
+            return String.join(
+                    ":",
+                    Paths.get(specs, suite, matcher.group("file")).toString(),
+                    matcher.group("ln"));
+        } else {
+            return Paths
+                    .get(specs, suite, file)
+                    .toString();
+        }
     }
 
     private void executeShellAsync(String suite, String shell, UUID uuid) {
@@ -112,6 +121,7 @@ public class SpecController {
             Process process = runtime.exec(shellArgs, null, new File(workspace));
             System.out.println(String.join(" ", shellArgs));
             BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), shellCharset));
+            StringBuilder output = new StringBuilder();
             String line;
             String report = null;
             while ((line = br.readLine()) != null) {
@@ -122,19 +132,20 @@ public class SpecController {
                         report = matcher.group();
                     }
                 }
+                output.append(line).append("\n");
             }
 
             Suite suite1 = suiteService.findByTitle(suite);
-            Result result =
-                    resultService.save(
-                            new Result(
-                                    report,
-                                    process.exitValue() == 0,
-                                    suite1));
-            Execution execution =
-                    executionService.save(
-                            new Execution(shell, suite1, result));
-            executionService.save(execution);
+            Boolean succeeded = process.exitValue() == 0;
+            resultService.save(
+                    new Result(
+                            suite1,
+                            shell,
+                            report,
+                            succeeded,
+                            output.toString()));
+
+
             onShellEnd.run(uuid, process.exitValue());
         } catch (IOException e) {
             e.printStackTrace();

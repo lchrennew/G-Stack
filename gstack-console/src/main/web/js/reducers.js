@@ -5,7 +5,7 @@ import {combineReducers} from 'redux'
 2. get index by suite
 */
 
-const index = (state = {idx: []}, action) => {
+const index = (state = {idx: null}, action) => {
     switch (action.type) {
         case 'FETCH_INDEX':
             return {fetch: true, idx: state.idx, suite: action.suite}
@@ -31,4 +31,15 @@ const suites = (state = {list: null}, action) => {
     }
 }
 
-export default combineReducers({index, suites,})
+const results = (state = {list: null}, action) => {
+    switch (action.type) {
+        case 'FETCH_RESULTS':
+            return {fetch: true, list: state.list, suite: action.suite}
+        case 'RECEIVE_RESULTS':
+            return {fetch: false, list: action.list, suite: action.suite}
+        default:
+            return state
+    }
+}
+
+export default combineReducers({index, suites, results,})

@@ -38,7 +38,7 @@ class ExecuteButton extends React.Component {
     }
     execute(e) {
         e.preventDefault();
-        let {suite, executeScenario, path} = this.props
+        let {suite, executeScenario, path = ''} = this.props
         executeScenario(suite, path)
         (
             this.onStart.bind(this),
@@ -48,8 +48,8 @@ class ExecuteButton extends React.Component {
     }
 
     render() {
-        let {className = "link"} = this.props
-        return <a href="#" className={className} onClick={this.execute.bind(this)}><Icon name="play"/></a>
+        let {className = "link", size = 16} = this.props
+        return <a href="#" className={className} onClick={this.execute.bind(this)}><Icon name="play" size={size}/></a>
     }
 }
 
