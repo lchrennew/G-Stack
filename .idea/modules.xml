@@ -4,11 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/gstack-api-log/gstack-api-log.iml" filepath="$PROJECT_DIR$/gstack-api-log/gstack-api-log.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-basic/gstack-basic.iml" filepath="$PROJECT_DIR$/gstack-basic/gstack-basic.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gstack-console/gstack-console.iml" filepath="$PROJECT_DIR$/gstack-console/gstack-console.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gstack-console-api/gstack-console-api.iml" filepath="$PROJECT_DIR$/gstack-console-api/gstack-console-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-http/gstack-http.iml" filepath="$PROJECT_DIR$/gstack-http/gstack-http.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-mysql/gstack-mysql.iml" filepath="$PROJECT_DIR$/gstack-mysql/gstack-mysql.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gstack-suite-parser/gstack-suite-parser.iml" filepath="$PROJECT_DIR$/gstack-suite-parser/gstack-suite-parser.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-ui-web/gstack-ui-web.iml" filepath="$PROJECT_DIR$/gstack-ui-web/gstack-ui-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/gstack-workspace/gstack-workspace.iml" filepath="$PROJECT_DIR$/gstack-workspace/gstack-workspace.iml" />
     </modules>

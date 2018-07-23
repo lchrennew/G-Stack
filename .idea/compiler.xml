@@ -6,9 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gstack-console" />
-        <module name="gstack-console-api" />
-        <module name="gstack-suite-parser" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
