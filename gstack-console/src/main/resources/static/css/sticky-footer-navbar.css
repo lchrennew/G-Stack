@@ -64,6 +64,7 @@ table.files {
     /*padding: .3rem;*/
 /*}*/
 
+
 table.files td.icon {
     width: 17px;
     padding-right: 2px;
@@ -103,13 +104,12 @@ table.files tr:hover td.actions a.link {
 }
 
 .feather {
-    width: 24px;
-    height: 24px;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
+    vertical-align: text-bottom;
 }
 
 .modal > .content.shell {
@@ -125,4 +125,16 @@ table.files tr:hover td.actions a.link {
 .shell p {
     margin-bottom: 0;
     white-space: pre-wrap;
+}
+
+.ui.card.create{
+    box-shadow: none;
+    border: 0.16em dashed rgba(0, 0, 0, 0.1);
+}
+.ui.card.create .content{
+    vertical-align: middle;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    color: #ddd
 }

@@ -2,11 +2,22 @@ import React from 'react'
 import Main from "./Main";
 import SuiteItem from "./SuiteItem";
 import { Card } from 'semantic-ui-react'
-import CreateSuiteButton from "./CreateSuiteButton";
+import {connect} from 'react-redux'
+import CreateSuiteCard from "./CreateSuiteCard";
+
+const mapDispatchToProps = dispatch => {
+    return {}
+}
+
+const mapStateToProps = (state, props) => {
+    return {
+        suites: state.suites.list
+    }
+}
 
 class Suites extends React.Component {
     render() {
-        let {suites = [{title: 'suite1', description: '...'}]} = this.props
+        let {suites} = this.props
         return <Main>
             <h1 className="mt-5">Test Suites</h1>
             <div className="row">
@@ -15,7 +26,7 @@ class Suites extends React.Component {
                         {
                             suites.map((suite, i) => <SuiteItem key={i} {...suite}/>)
                         }
-                        <CreateSuiteButton/>
+                        <CreateSuiteCard/>
                     </Card.Group>
                 </div>
             </div>
@@ -23,4 +34,4 @@ class Suites extends React.Component {
     }
 }
 
-export default Suites
+export default connect(mapStateToProps, mapDispatchToProps)(Suites)

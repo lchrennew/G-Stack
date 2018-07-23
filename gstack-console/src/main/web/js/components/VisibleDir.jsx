@@ -1,5 +1,4 @@
 import {connect} from 'react-redux'
-import {addToCart, execDir, fetchIndex} from "../actions";
 import Dir from "./Dir";
 import jQuery from 'jquery'
 
@@ -93,12 +92,6 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onExecuteClick: (suite, dir) => {
-            dispatch(execDir(suite, dir))
-        },
-        onAddToCartClick: (suite, dir) => {
-            dispatch(addToCart(suite, dir))
-        },
     }
 }
 

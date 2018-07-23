@@ -4,11 +4,16 @@ import Icon from './Icon'
 
 class CreateSuiteButton extends React.Component {
     render() {
-        return <Card>
-            <Card.Content textAlign='center' as="a">
-                <Icon name="plus" size={64}/>
-            </Card.Content>
-        </Card>
+        let {onClick} = this.props
+        return <Card.Content
+            textAlign='center'
+            as="a"
+            onClick={onClick}>
+            <div>
+                <Icon name="plus-circle" size={32}/>
+                <Card.Meta>Create new test suite</Card.Meta>
+            </div>
+        </Card.Content>
     }
 }
 

@@ -10,12 +10,15 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+const noData = state => state.index.idx == null,
+    suiteChanged = (state, props) => state.index.suite !== props.match.params.suite
+
 const mapStateToProps = (state, props) => {
     return {
-        needShowLoading: state.index.idx == null
+        needShowLoading: noData(state) || suiteChanged(state, props)
     }
-}
 
+}
 
 class IndexProvider extends React.Component {
     async componentDidMount() {
@@ -36,7 +39,7 @@ class IndexProvider extends React.Component {
 
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(IndexProvider))
+)(IndexProvider))

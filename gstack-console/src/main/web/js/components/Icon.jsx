@@ -11,6 +11,7 @@ class Icon extends React.Component {
             strokeWidth="1"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="feather"
         >
             <use xlinkHref={`/lib/feather-sprite.svg#${name}`}/>
         </svg>

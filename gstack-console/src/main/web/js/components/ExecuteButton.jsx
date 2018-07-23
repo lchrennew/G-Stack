@@ -48,7 +48,8 @@ class ExecuteButton extends React.Component {
     }
 
     render() {
-        return <a href="#" className="link" onClick={this.execute.bind(this)}><Icon name="play"/></a>
+        let {className = "link"} = this.props
+        return <a href="#" className={className} onClick={this.execute.bind(this)}><Icon name="play"/></a>
     }
 }
 

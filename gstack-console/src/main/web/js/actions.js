@@ -10,13 +10,7 @@ const json = (body, opt) => Object.assign({}, opt, {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(body),
 })
-
-export const addToCart = (suite, ...dirs) => ({
-    type: 'ADD_TO_CART',
-    suite,
-    dirs
-})
-
+// TODO: addToCart
 // TODO: execCart
 // TODO: removeFromCart
 // TODO: clearCart
@@ -25,15 +19,6 @@ export const addToCart = (suite, ...dirs) => ({
 // TODO: fetchSuites
 // TODO: receiveSuites
 // TODO: removeSuite
-
-
-export const execDir = (suite, ...dirs) => ({
-    type: 'EXEC_DIR',
-    suite,
-    dirs,
-})
-
-
 export const executing = (execid) => ({
     type: 'EXECUTING',
     execid,
@@ -60,13 +45,65 @@ const _fetchIndex = suite => async dispatch => {
     return null
 }
 
+const indexNotFetching = state => !state.index.fetch
+const indexSuiteChanged = (state, suite) => suite !== state.index.suite
+
 export const fetchIndex = (suite) => (dispatch, getState) => {
     let state = getState()
-    if (!state.index.fetch) {
+    if (indexNotFetching(state)
+        && indexSuiteChanged(state, suite)) {
         return dispatch(_fetchIndex(suite))
     }
     else return Promise.resolve()
 }
+
+const requestSuites = () => ({
+    type: 'FETCH_SUITES'
+})
+
+const receiveSuites = list => ({
+    type: 'RECEIVE_SUITES',
+    list
+})
+
+const _fetchSuites = () => async dispatch => {
+    dispatch(requestSuites())
+    let response = await api(`suites`, {credentials: 'include'})(dispatch)
+    if (response.ok) {
+        let list = await  response.json()
+        return dispatch(receiveSuites(list))
+    }
+    return null
+}
+
+const suitesNotFetching = state => !state.suites.fetch
+
+export const fetchSuites = () => (dispatch, getState) => {
+    let state = getState()
+    if (suitesNotFetching(state)) {
+        return dispatch(_fetchSuites())
+    }
+    else return Promise.resolve()
+}
+
+const creatingSuite = suite => ({type: 'CREATING_SUITE', suite})
+const createdSuite = suite => ({type: 'CREATED_SUITE', suite})
+const _createSuite = (suite) => async dispatch => {
+    dispatch(creatingSuite(suite))
+    let response = await api(`suites`, json(suite, {credentials: 'include'}))(dispatch)
+    if (response.ok) {
+        let suite = await  response.json()
+        return dispatch(createdSuite(suite))
+    }
+    return null
+}
+
+export const createSuite = suite => (dispatch, getState) => {
+    let state = getState()
+    return dispatch(_createSuite(suite))
+}
+
+
 
 const printOutput = (uuid, onPrint, onEnd) => {
     let socket = new SockJS(`http://${webApi}/gstack-console-websocket`),

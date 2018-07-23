@@ -7,6 +7,7 @@ import App from "./App";
 import Header from './Header'
 import Footer from "./Footer";
 import Suites from "./Suites";
+import SuitesProvider from "./SuitesProvider";
 
 
 class Index extends React.Component {
@@ -23,12 +24,14 @@ class Index extends React.Component {
     render() {
         return <App>
             <Header/>
-            <Switch>
-                <Route path="/:suite/tree/:dir" component={Directory}/>
-                <Route path="/:suite/clob/:dir" component={File}/>
-                <Route path="/:suite" component={Suite}/>
-                <Route path="/" component={Suites}/>
-            </Switch>
+            <SuitesProvider>
+                <Switch>
+                    <Route path="/:suite/tree/:dir" component={Directory}/>
+                    <Route path="/:suite/clob/:dir" component={File}/>
+                    <Route path="/:suite" component={Suite}/>
+                    <Route path="/" component={Suites}/>
+                </Switch>
+            </SuitesProvider>
             <Footer/>
         </App>
     }
