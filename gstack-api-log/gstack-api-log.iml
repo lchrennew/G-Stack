@@ -9,7 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.9" level="project" />
+    <orderEntry type="module" module-name="gstack-http" production-on-test="" />
     <orderEntry type="library" scope="TEST" name="Maven: com.thoughtworks.gauge:gauge-java:0.6.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.reflections:reflections:0.9.11" level="project" />
