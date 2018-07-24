@@ -9,16 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-jdbc:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-core:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-tx:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-jdbc:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-core:4.2.4.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-tx:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.thoughtworks.gauge:gauge-java:0.6.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.reflections:reflections:0.9.11" level="project" />
